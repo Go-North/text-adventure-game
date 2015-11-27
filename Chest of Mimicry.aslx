@@ -14,29 +14,34 @@
     <attr name="feature_pictureframe" type="boolean">false</attr>
     <showpanes type="boolean">false</showpanes>
     <showborder type="boolean">false</showborder>
-    <start type="script">
-      TextFX_Typewriter ("TODO: Introduction text", 115)
-    </start>
     <autodescription />
     <attr name="autodescription_youarein_useprefix" type="boolean">false</attr>
     <attr name="autodescription_description" type="int">1</attr>
     <attr name="autodescription_youarein" type="int">0</attr>
-    <pov type="object">player</pov>
     <gridmap type="boolean">false</gridmap>
     <showscore type="boolean">false</showscore>
     <showlocation type="boolean">false</showlocation>
     <attr name="autodescription_youcansee" type="int">2</attr>
     <attr name="autodescription_youcango" type="int">0</attr>
+    <feature_limitinventory />
+    <pov type="object">player</pov>
+    <start type="script">
+      TextFX_Typewriter ("TODO: Introduction text. This is where the background of the protagonist, Alekhine, would go, perhaps explaining a bit of backstory and how he came to find himself where he is, which is in his office. Extra text here gives a bit more time to experience the typing.", 115)
+    </start>
   </game>
   <object name="Office">
     <inherit name="editor_room" />
-    <beforefirstenter type="script">
-    </beforefirstenter>
     <description><![CDATA[<b>My Office</b>: A dimly-lit room full of files and a lingering scent of smoke.]]></description>
-    <firstenter type="script">
-    </firstenter>
     <usedefaultprefix />
     <objectslistprefix>I could see</objectslistprefix>
+    <beforefirstenter type="script">
+      ClearScreen
+      msg ("I awoke to the sound of a folder hitting my desk.")
+      wait {
+      }
+    </beforefirstenter>
+    <firstenter type="script">
+    </firstenter>
     <exit alias="north" to="Golf Club">
       <inherit name="northdirection" />
     </exit>
@@ -49,33 +54,90 @@
     <exit alias="south" to="Downtown">
       <inherit name="southdirection" />
     </exit>
-    <object name="Handgun">
+    <object name="Forsyth">
       <inherit name="editor_object" />
-      <look>Colt 1911. My trusty sidepiece. Saved my hide more than once.</look>
-      <take />
-      <takemsg>Holstered.</takemsg>
+      <inherit name="namedmale" />
+      <gender>he</gender>
+      <article>him</article>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <takemsg>"Don't get handsy," he said with a frown.</takemsg>
       <drop type="boolean">false</drop>
-      <dropmsg>I couldn't think of a reason to leave it behind, so I didn't.</dropmsg>
-      <alias>handgun</alias>
+      <alias>Forsyth</alias>
       <alt type="stringlist">
-        <value>gun</value>
-        <value>Colt 1911</value>
-        <value>colt 1911</value>
+        <value>forsyth</value>
+        <value>assistant</value>
       </alt>
+      <look>Forsyth, my assistant.</look>
+      <usestandardverblist type="boolean">false</usestandardverblist>
+      <shoot type="scriptdictionary">
+        <item key="Handgun">
+          ClearScreen
+          SetBackgroundColour ("Black")
+          SetForegroundColour ("White")
+          TextFX_Typewriter ("\"Aghhh!\"", 200)
+          TextFX_Typewriter ("With a bang, a bullet tore into his chest. With a cry of pain, he slumped to the ground, blood pouring from the cavity. I froze up. What did I just do? I had to get out of there, now.", 50)
+          TextFX_Unscramble ("GAME OVER", 1500, 1)
+          finish
+        </item>
+      </shoot>
     </object>
-    <object name="Handcuffs">
+    <object name="Case File">
       <inherit name="editor_object" />
+      <alias>case file</alias>
+      <look>The folder containing all the information for the case.</look>
       <alt type="stringlist">
-        <value>handcuffs</value>
-        <value>cuffs</value>
-        <value>irons</value>
+        <value>case</value>
+        <value>file</value>
       </alt>
-      <look>These've kept a fair few perps from pulling any funny business on the way here.</look>
-      <takemsg>Got 'em.</takemsg>
       <take />
-      <alias>pair of handcuffs</alias>
-      <drop type="boolean">false</drop>
-      <dropmsg>Didn't think any punk would wait for me to come grab 'em, so I kept 'em close.</dropmsg>
+      <takemsg>Got it.</takemsg>
+      <ontake type="script">
+        msg ("\"The newest murder in town, down at the slums,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway.\"")
+      </ontake>
+    </object>
+    <object name="Drawer">
+      <inherit name="editor_object" />
+      <inherit name="container_limited" />
+      <alias>drawer</alias>
+      <scenery />
+      <feature_container />
+      <hidechildren />
+      <listchildren />
+      <listchildrenprefix>It held</listchildrenprefix>
+      <maxobjects type="int">2</maxobjects>
+      <openmsg>I slid it open with a sharp tug.</openmsg>
+      <closemsg>I slid it closed again.</closemsg>
+      <contentsprefix>contained</contentsprefix>
+      <look>A drawer in my desk.</look>
+      <isopen type="boolean">false</isopen>
+      <object name="Handcuffs">
+        <inherit name="editor_object" />
+        <alt type="stringlist">
+          <value>handcuffs</value>
+          <value>cuffs</value>
+          <value>irons</value>
+        </alt>
+        <look>These've kept a fair few perps from pulling any funny business on the way here.</look>
+        <takemsg>Got 'em.</takemsg>
+        <take />
+        <alias>pair of handcuffs</alias>
+        <drop type="boolean">false</drop>
+        <dropmsg>Didn't think any punk would wait for me to come grab 'em, so I kept 'em close.</dropmsg>
+      </object>
+      <object name="Handgun">
+        <inherit name="editor_object" />
+        <look>Colt 1911. My trusty sidepiece. Saved my hide more than once.</look>
+        <take />
+        <takemsg>Holstered.</takemsg>
+        <drop type="boolean">false</drop>
+        <dropmsg>I couldn't think of a reason to leave it behind, so I didn't.</dropmsg>
+        <alias>handgun</alias>
+        <alt type="stringlist">
+          <value>gun</value>
+          <value>Colt 1911</value>
+          <value>colt 1911</value>
+        </alt>
+      </object>
     </object>
   </object>
   <object name="Marketplace">
@@ -276,20 +338,20 @@
   <object name="Introduction">
     <inherit name="editor_room" />
     <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <objectslistprefix>I could see</objectslistprefix>
     <firstenter type="script">
       wait {
         MoveObject (player, Office)
       }
     </firstenter>
-    <objectslistprefix>I could see</objectslistprefix>
     <object name="player">
       <inherit name="editor_object" />
       <inherit name="editor_player" />
     </object>
   </object>
   <verb>
-    <property>cuff</property>
-    <pattern>cuff</pattern>
-    <defaultexpression>"You can't cuff " + object.article + "."</defaultexpression>
+    <property>shoot</property>
+    <pattern>shoot</pattern>
+    <defaultexpression>"You can't shoot " + object.article + "."</defaultexpression>
   </verb>
 </asl>
