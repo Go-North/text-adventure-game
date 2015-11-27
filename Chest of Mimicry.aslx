@@ -80,6 +80,7 @@
   </object>
   <object name="Marketplace">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="west" to="Office">
       <inherit name="westdirection" />
     </exit>
@@ -96,6 +97,7 @@
   <object name="Alekhines Home">
     <inherit name="editor_room" />
     <alias>Alekhine's Home</alias>
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="west" to="Marketplace">
       <inherit name="westdirection" />
     </exit>
@@ -108,6 +110,7 @@
   </object>
   <object name="Church">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="west" to="Apartment Complex">
       <inherit name="westdirection" />
     </exit>
@@ -120,6 +123,7 @@
   </object>
   <object name="Outskirts">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="west" to="Sewage Dump">
       <inherit name="westdirection" />
     </exit>
@@ -129,6 +133,7 @@
   </object>
   <object name="Resort">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="south" to="Alekhines Home">
       <inherit name="southdirection" />
     </exit>
@@ -138,6 +143,7 @@
   </object>
   <object name="School">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="north" to="Palace">
       <inherit name="northdirection" />
     </exit>
@@ -151,6 +157,7 @@
   <object name="Rookters">
     <inherit name="editor_room" />
     <alias>Rookter's Home</alias>
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="north" to="School">
       <inherit name="northdirection" />
     </exit>
@@ -163,6 +170,7 @@
   </object>
   <object name="Alley">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="west" to="Slum Neighbourhood">
       <inherit name="westdirection" />
     </exit>
@@ -175,6 +183,7 @@
   </object>
   <object name="Sewage Dump">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="north" to="Apartment Complex">
       <inherit name="northdirection" />
     </exit>
@@ -187,6 +196,7 @@
   </object>
   <object name="Government Offices">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="south" to="Marketplace">
       <inherit name="southdirection" />
     </exit>
@@ -199,6 +209,7 @@
   </object>
   <object name="Apartment Complex">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="north" to="Marketplace">
       <inherit name="northdirection" />
     </exit>
@@ -214,6 +225,7 @@
   </object>
   <object name="Golf Club">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="west" to="Palace">
       <inherit name="westdirection" />
     </exit>
@@ -226,6 +238,7 @@
   </object>
   <object name="Downtown">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="north" to="Office">
       <inherit name="northdirection" />
     </exit>
@@ -242,6 +255,7 @@
   <object name="Palace">
     <inherit name="editor_room" />
     <usedefaultprefix />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="east" to="Golf Club">
       <inherit name="eastdirection" />
     </exit>
@@ -251,6 +265,7 @@
   </object>
   <object name="Slum Neighbourhood">
     <inherit name="editor_room" />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="east" to="Alley">
       <inherit name="eastdirection" />
     </exit>
@@ -266,6 +281,7 @@
         MoveObject (player, Office)
       }
     </firstenter>
+    <objectslistprefix>I could see</objectslistprefix>
     <object name="player">
       <inherit name="editor_object" />
       <inherit name="editor_player" />
