@@ -8,59 +8,203 @@
     <version>1.0</version>
     <firstpublished>2015</firstpublished>
   </game>
-  <object name="Palace">
-    <inherit name="editor_room" />
-    <usedefaultprefix />
-  </object>
   <object name="Office">
     <inherit name="editor_room" />
     <object name="player">
       <inherit name="editor_object" />
       <inherit name="editor_player" />
     </object>
+    <exit alias="north" to="Golf Club">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="west" to="School">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="east" to="Marketplace">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="south" to="Downtown">
+      <inherit name="southdirection" />
+    </exit>
   </object>
   <object name="Marketplace">
     <inherit name="editor_room" />
+    <exit alias="west" to="Office">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="south" to="Apartment Complex">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="east" to="Alekhines Home">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="north" to="Government Offices">
+      <inherit name="northdirection" />
+    </exit>
   </object>
   <object name="Alekhines Home">
     <inherit name="editor_room" />
     <alias>Alekhine's Home</alias>
+    <exit alias="west" to="Marketplace">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Resort">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Church">
+      <inherit name="southdirection" />
+    </exit>
   </object>
   <object name="Church">
     <inherit name="editor_room" />
+    <exit alias="west" to="Apartment Complex">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Alekhines Home">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Outskirts">
+      <inherit name="southdirection" />
+    </exit>
   </object>
   <object name="Outskirts">
     <inherit name="editor_room" />
+    <exit alias="west" to="Sewage Dump">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Church">
+      <inherit name="northdirection" />
+    </exit>
   </object>
   <object name="Resort">
     <inherit name="editor_room" />
+    <exit alias="south" to="Alekhines Home">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="west" to="Government Offices">
+      <inherit name="westdirection" />
+    </exit>
   </object>
   <object name="School">
     <inherit name="editor_room" />
+    <exit alias="north" to="Palace">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="east" to="Office">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="south" to="Rookters">
+      <inherit name="southdirection" />
+    </exit>
   </object>
   <object name="Rookters">
     <inherit name="editor_room" />
     <alias>Rookter's Home</alias>
-  </object>
-  <object name="Slum Neighbourhood">
-    <inherit name="editor_room" />
+    <exit alias="north" to="School">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="south" to="Slum Neighbourhood">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="east" to="Downtown">
+      <inherit name="eastdirection" />
+    </exit>
   </object>
   <object name="Alley">
     <inherit name="editor_room" />
+    <exit alias="west" to="Slum Neighbourhood">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="north" to="Downtown">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="east" to="Sewage Dump">
+      <inherit name="eastdirection" />
+    </exit>
   </object>
   <object name="Sewage Dump">
     <inherit name="editor_room" />
+    <exit alias="north" to="Apartment Complex">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="west" to="Alley">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="east" to="Outskirts">
+      <inherit name="eastdirection" />
+    </exit>
   </object>
   <object name="Government Offices">
     <inherit name="editor_room" />
+    <exit alias="south" to="Marketplace">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="west" to="Golf Club">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="east" to="Resort">
+      <inherit name="eastdirection" />
+    </exit>
   </object>
   <object name="Apartment Complex">
     <inherit name="editor_room" />
+    <exit alias="north" to="Marketplace">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="west" to="Downtown">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="east" to="Church">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="south" to="Sewage Dump">
+      <inherit name="southdirection" />
+    </exit>
   </object>
   <object name="Golf Club">
     <inherit name="editor_room" />
+    <exit alias="west" to="Palace">
+      <inherit name="westdirection" />
+    </exit>
+    <exit alias="south" to="Office">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="east" to="Government Offices">
+      <inherit name="eastdirection" />
+    </exit>
   </object>
   <object name="Downtown">
     <inherit name="editor_room" />
+    <exit alias="north" to="Office">
+      <inherit name="northdirection" />
+    </exit>
+    <exit alias="east" to="Apartment Complex">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="south" to="Alley">
+      <inherit name="southdirection" />
+    </exit>
+    <exit alias="west" to="Rookters">
+      <inherit name="westdirection" />
+    </exit>
+  </object>
+  <object name="Palace">
+    <inherit name="editor_room" />
+    <usedefaultprefix />
+    <exit alias="east" to="Golf Club">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="south" to="School">
+      <inherit name="southdirection" />
+    </exit>
+  </object>
+  <object name="Slum Neighbourhood">
+    <inherit name="editor_room" />
+    <exit alias="east" to="Alley">
+      <inherit name="eastdirection" />
+    </exit>
+    <exit alias="north" to="Rookters">
+      <inherit name="northdirection" />
+    </exit>
   </object>
 </asl>
