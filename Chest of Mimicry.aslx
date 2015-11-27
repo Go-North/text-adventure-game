@@ -3,15 +3,64 @@
   <include ref="English.aslx" />
   <include ref="Core.aslx" />
   <game name="Chest of Mimicry">
+    <inherit name="theme_typewriter" />
     <gameid>236f15d4-6e9b-45a5-a8ff-69eea667c76a</gameid>
     <version>1.0</version>
     <firstpublished>2015</firstpublished>
   </game>
-  <object name="room">
+  <object name="Palace">
+    <inherit name="editor_room" />
+    <usedefaultprefix />
+  </object>
+  <object name="Office">
     <inherit name="editor_room" />
     <object name="player">
       <inherit name="editor_object" />
       <inherit name="editor_player" />
     </object>
+  </object>
+  <object name="Marketplace">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Alekhines Home">
+    <inherit name="editor_room" />
+    <alias>Alekhine's Home</alias>
+  </object>
+  <object name="Church">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Outskirts">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Resort">
+    <inherit name="editor_room" />
+  </object>
+  <object name="School">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Rookters">
+    <inherit name="editor_room" />
+    <alias>Rookter's Home</alias>
+  </object>
+  <object name="Slum Neighbourhood">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Alley">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Sewage Dump">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Government Offices">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Apartment Complex">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Golf Club">
+    <inherit name="editor_room" />
+  </object>
+  <object name="Downtown">
+    <inherit name="editor_room" />
   </object>
 </asl>
