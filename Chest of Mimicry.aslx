@@ -7,13 +7,36 @@
     <gameid>236f15d4-6e9b-45a5-a8ff-69eea667c76a</gameid>
     <version>1.0</version>
     <firstpublished>2015</firstpublished>
+    <defaultbackground>White</defaultbackground>
+    <author>Go North</author>
+    <category>Mystery</category>
+    <enablehyperlinks />
+    <attr name="feature_pictureframe" type="boolean">false</attr>
+    <showpanes type="boolean">false</showpanes>
+    <showborder type="boolean">false</showborder>
+    <start type="script">
+      TextFX_Typewriter ("TODO: Introduction text", 115)
+    </start>
+    <autodescription />
+    <attr name="autodescription_youarein_useprefix" type="boolean">false</attr>
+    <attr name="autodescription_description" type="int">1</attr>
+    <attr name="autodescription_youarein" type="int">0</attr>
+    <pov type="object">player</pov>
+    <gridmap type="boolean">false</gridmap>
+    <showscore type="boolean">false</showscore>
+    <showlocation type="boolean">false</showlocation>
+    <attr name="autodescription_youcansee" type="int">2</attr>
+    <attr name="autodescription_youcango" type="int">0</attr>
   </game>
   <object name="Office">
     <inherit name="editor_room" />
-    <object name="player">
-      <inherit name="editor_object" />
-      <inherit name="editor_player" />
-    </object>
+    <beforefirstenter type="script">
+    </beforefirstenter>
+    <description><![CDATA[<b>My Office</b>: A dimly-lit room full of files and a lingering scent of smoke.]]></description>
+    <firstenter type="script">
+    </firstenter>
+    <usedefaultprefix />
+    <objectslistprefix>I could see</objectslistprefix>
     <exit alias="north" to="Golf Club">
       <inherit name="northdirection" />
     </exit>
@@ -26,6 +49,34 @@
     <exit alias="south" to="Downtown">
       <inherit name="southdirection" />
     </exit>
+    <object name="Handgun">
+      <inherit name="editor_object" />
+      <look>Colt 1911. My trusty sidepiece. Saved my hide more than once.</look>
+      <take />
+      <takemsg>Holstered.</takemsg>
+      <drop type="boolean">false</drop>
+      <dropmsg>I couldn't think of a reason to leave it behind, so I didn't.</dropmsg>
+      <alias>handgun</alias>
+      <alt type="stringlist">
+        <value>gun</value>
+        <value>Colt 1911</value>
+        <value>colt 1911</value>
+      </alt>
+    </object>
+    <object name="Handcuffs">
+      <inherit name="editor_object" />
+      <alt type="stringlist">
+        <value>handcuffs</value>
+        <value>cuffs</value>
+        <value>irons</value>
+      </alt>
+      <look>These've kept a fair few perps from pulling any funny business on the way here.</look>
+      <takemsg>Got 'em.</takemsg>
+      <take />
+      <alias>pair of handcuffs</alias>
+      <drop type="boolean">false</drop>
+      <dropmsg>Didn't think any punk would wait for me to come grab 'em, so I kept 'em close.</dropmsg>
+    </object>
   </object>
   <object name="Marketplace">
     <inherit name="editor_room" />
@@ -207,4 +258,22 @@
       <inherit name="northdirection" />
     </exit>
   </object>
+  <object name="Introduction">
+    <inherit name="editor_room" />
+    <usedefaultprefix type="boolean">false</usedefaultprefix>
+    <firstenter type="script">
+      wait {
+        MoveObject (player, Office)
+      }
+    </firstenter>
+    <object name="player">
+      <inherit name="editor_object" />
+      <inherit name="editor_player" />
+    </object>
+  </object>
+  <verb>
+    <property>cuff</property>
+    <pattern>cuff</pattern>
+    <defaultexpression>"You can't cuff " + object.article + "."</defaultexpression>
+  </verb>
 </asl>
