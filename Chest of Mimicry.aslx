@@ -42,18 +42,27 @@
     </beforefirstenter>
     <firstenter type="script">
     </firstenter>
-    <exit alias="north" to="Golf Club">
+    <exit name="Office GolfClub" alias="north" to="Golf Club">
       <inherit name="northdirection" />
-      <scenery />
+      <scenery type="boolean">false</scenery>
+      <locked />
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="west" to="School">
+    <exit name="Office School" alias="west" to="School">
       <inherit name="westdirection" />
+      <locked />
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="east" to="Marketplace">
+    <exit name="Office Marketplace" alias="east" to="Marketplace">
       <inherit name="eastdirection" />
+      <locked />
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="south" to="Downtown">
+    <exit name="Office Downtown" alias="south" to="Downtown">
       <inherit name="southdirection" />
+      <runscript type="boolean">false</runscript>
+      <locked />
+      <lockmessage>I need to check my case</lockmessage>
     </exit>
     <object name="Forsyth">
       <inherit name="editor_object" />
@@ -93,8 +102,10 @@
       <take />
       <takemsg>Got it.</takemsg>
       <ontake type="script">
-        msg ("\"The newest murder in town, down at the slums,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway.\"")
+        msg ("\"The newest murder in town, down at the slums, happened in the Alley\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway.\"")
+        UnlockExit (Office Downtown)
       </ontake>
+      <visible />
     </object>
     <object name="Drawer">
       <inherit name="editor_object" />
@@ -140,22 +151,42 @@
         </alt>
       </object>
     </object>
+    <object name="Case File 2">
+      <inherit name="editor_object" />
+      <alias>Case File</alias>
+      <visible type="boolean">false</visible>
+      <look>The folder containing all the information for the case.</look>
+    </object>
+    <object name="Case File 3">
+      <inherit name="editor_object" />
+      <alias>Case File</alias>
+      <visible type="boolean">false</visible>
+      <look>The folder containing all the information for the case.</look>
+    </object>
   </object>
   <object name="Marketplace">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Marcketplace</description>
-    <exit alias="west" to="Office">
+    <exit name="Marketplace Office" alias="west" to="Office">
       <inherit name="westdirection" />
+      <locked type="boolean">false</locked>
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="south" to="Apartment Complex">
+    <exit name="Marketplace Apartments" alias="south" to="Apartment Complex">
       <inherit name="southdirection" />
+      <locked type="boolean">false</locked>
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="east" to="Alekhines Home">
+    <exit name="Marketplace AlekhinesHome" alias="east" to="Alekhines Home">
       <inherit name="eastdirection" />
+      <locked type="boolean">false</locked>
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="north" to="Government Offices">
+    <exit name="Marketplace GovermentOffices" alias="north" to="Government Offices">
       <inherit name="northdirection" />
+      <locked />
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
   </object>
   <object name="Alekhines Home">
@@ -163,64 +194,91 @@
     <alias>Alekhine's Home</alias>
     <objectslistprefix>I could see</objectslistprefix>
     <description>Home</description>
-    <exit alias="west" to="Marketplace">
+    <exit name="AlekhinesHome Marketplace" alias="west" to="Marketplace">
       <inherit name="westdirection" />
+      <locked type="boolean">false</locked>
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="north" to="Resort">
+    <exit name="AlekhinesHome Resort" alias="north" to="Resort">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way.</lockmessage>
+      <locked />
     </exit>
-    <exit alias="south" to="Church">
+    <exit name="AlekhinesHome Church" alias="south" to="Church">
       <inherit name="southdirection" />
+      <visible type="boolean">false</visible>
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Church">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Church</description>
-    <exit alias="west" to="Apartment Complex">
+    <exit name="Church Apartment" alias="west" to="Apartment Complex">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="north" to="Alekhines Home">
+    <exit name="Church AlekhinesHome" alias="north" to="Alekhines Home">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="south" to="Outskirts">
+    <exit name="Church Outskirts" alias="south" to="Outskirts">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Outskirts">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Outskirts</description>
-    <exit alias="west" to="Sewage Dump">
+    <exit name="Outskirts SewageDump" alias="west" to="Sewage Dump">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="north" to="Church">
+    <exit name="Outskirts Curch" alias="north" to="Church">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Resort">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Resort</description>
-    <exit alias="south" to="Alekhines Home">
+    <exit name="Resort AlekhinesHome" alias="south" to="Alekhines Home">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="west" to="Government Offices">
+    <exit name="Resort GovermentOffices" alias="west" to="Government Offices">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked />
     </exit>
   </object>
   <object name="School">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>School</description>
-    <exit alias="north" to="Palace">
+    <exit name="School Palace" alias="north" to="Palace">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked />
     </exit>
-    <exit alias="east" to="Office">
+    <exit name="School Office" alias="east" to="Office">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="south" to="Rookters">
+    <exit name="School Rookters" alias="south" to="Rookters">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Rookters">
@@ -228,104 +286,168 @@
     <alias>Rookter's Home</alias>
     <objectslistprefix>I could see</objectslistprefix>
     <description>Rookters</description>
-    <exit alias="north" to="School">
+    <exit name="Rookters School" alias="north" to="School">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="south" to="Slum Neighbourhood">
+    <exit name="Rookters SlumNeighbourhood" alias="south" to="Slum Neighbourhood">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="east" to="Downtown">
+    <exit name="Rookters Downtown" alias="east" to="Downtown">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Alley">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Alley</description>
-    <exit alias="west" to="Slum Neighbourhood">
+    <firstenter type="script">
+      UnlockExit (Office School)
+      UnlockExit (Office Marketplace)
+      UnlockExit (Downtown Rookters)
+      UnlockExit (Downtown Apartments)
+      msg ("I arrive at the crime scene, stepping past the police tape I see a mangled body lying in the Alley.")
+    </firstenter>
+    <exit name="Alley SlumNeighbourhood" alias="west" to="Slum Neighbourhood">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="north" to="Downtown">
+    <exit name="Alley Downtown" alias="north" to="Downtown">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="east" to="Sewage Dump">
+    <exit name="Alley SewageDump" alias="east" to="Sewage Dump">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
+    <object name="Ponder">
+      <inherit name="editor_object" />
+      <look>Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds.</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <alias>body</alias>
+    </object>
   </object>
   <object name="Sewage Dump">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Sewage Dump</description>
-    <exit alias="north" to="Apartment Complex">
+    <exit name="SewageDump Apartments" alias="north" to="Apartment Complex">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="west" to="Alley">
+    <exit name="SewageDump Alley" alias="west" to="Alley">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="east" to="Outskirts">
+    <exit name="SewageDump Outskirts" alias="east" to="Outskirts">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Government Offices">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Goverment Offices</description>
-    <exit alias="south" to="Marketplace">
+    <exit name="GovermentOffices Marketplace" alias="south" to="Marketplace">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="west" to="Golf Club">
+    <exit name="GovermentOffices GolfClub" alias="west" to="Golf Club">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked />
     </exit>
-    <exit alias="east" to="Resort">
+    <exit name="GovermentOffices Resort" alias="east" to="Resort">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked />
     </exit>
   </object>
   <object name="Apartment Complex">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Apartments</description>
-    <exit alias="north" to="Marketplace">
+    <exit name="Apartments Maketplace" alias="north" to="Marketplace">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="west" to="Downtown">
+    <exit name="Apartments Downtown" alias="west" to="Downtown">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="east" to="Church">
+    <exit name="Apartments Church" alias="east" to="Church">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="south" to="Sewage Dump">
+    <exit name="Apartments SewageDump" alias="south" to="Sewage Dump">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Golf Club">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Golf Club</description>
-    <exit alias="west" to="Palace">
+    <exit name="GolfClub Palace" alias="west" to="Palace">
       <inherit name="westdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked />
     </exit>
-    <exit alias="south" to="Office">
+    <exit name="GolfClub Office" alias="south" to="Office">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="east" to="Government Offices">
+    <exit name="GolfClub GovermentOffices" alias="east" to="Government Offices">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked />
     </exit>
   </object>
   <object name="Downtown">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Downtown</description>
-    <exit alias="north" to="Office">
+    <exit name="Downtown Office" alias="north" to="Office">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="east" to="Apartment Complex">
+    <exit name="Downtown Apartments" alias="east" to="Apartment Complex">
       <inherit name="eastdirection" />
+      <locked />
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
-    <exit alias="south" to="Alley">
+    <exit name="Downtown Alley" alias="south" to="Alley">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="west" to="Rookters">
+    <exit name="Downtown Rookters" alias="west" to="Rookters">
       <inherit name="westdirection" />
+      <locked />
+      <lockmessage>I don't need to go this way</lockmessage>
     </exit>
   </object>
   <object name="Palace">
@@ -333,22 +455,30 @@
     <usedefaultprefix />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Palace</description>
-    <exit alias="east" to="Golf Club">
+    <exit name="Palace GolfClub" alias="east" to="Golf Club">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked />
     </exit>
-    <exit alias="south" to="School">
+    <exit name="Palace School" alias="south" to="School">
       <inherit name="southdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Slum Neighbourhood">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Slums</description>
-    <exit alias="east" to="Alley">
+    <exit name="SlumNeighbourhood Alley" alias="east" to="Alley">
       <inherit name="eastdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
-    <exit alias="north" to="Rookters">
+    <exit name="SlumNeighbourhood Rookters" alias="north" to="Rookters">
       <inherit name="northdirection" />
+      <lockmessage>I don't need to go this way</lockmessage>
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Introduction">
@@ -372,12 +502,12 @@
         <take />
         <inventoryverbs type="stringlist">
           <value>Look at</value>
-          <value>Use</value>
         </inventoryverbs>
         <ontake type="script">
         </ontake>
         <volume type="int">0</volume>
         <look>{img:grid.png}</look>
+        <drop type="boolean">false</drop>
       </object>
     </object>
   </object>
@@ -385,8 +515,5 @@
     <property>shoot</property>
     <pattern>shoot</pattern>
     <defaultexpression>"You can't shoot " + object.article + "."</defaultexpression>
-  </verb>
-  <verb>
-    <multiobjectmenuempty>There are no objects available tk87o do that with.</multiobjectmenuempty>
   </verb>
 </asl>
