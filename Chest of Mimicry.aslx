@@ -44,6 +44,7 @@
     </firstenter>
     <exit alias="north" to="Golf Club">
       <inherit name="northdirection" />
+      <scenery />
     </exit>
     <exit alias="west" to="School">
       <inherit name="westdirection" />
@@ -370,4 +371,20 @@
     <pattern>shoot</pattern>
     <defaultexpression>"You can't shoot " + object.article + "."</defaultexpression>
   </verb>
+  <verb>
+    <multiobjectmenuempty>There are no objects available tk87o do that with.</multiobjectmenuempty>
+  </verb>
+  <object name="Map">
+    <inherit name="editor_object" />
+    <displayverbs type="stringlist">
+      <value>Look at</value>
+    </displayverbs>
+    <take />
+    <inventoryverbs type="stringlist">
+      <value>Look at</value>
+      <value>Use</value>
+    </inventoryverbs>
+    <ontake type="script">
+    </ontake>
+  </object>
 </asl>
