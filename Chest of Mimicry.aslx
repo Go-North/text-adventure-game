@@ -42,6 +42,9 @@
     </beforefirstenter>
     <firstenter type="script">
     </firstenter>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Office GolfClub" alias="north" to="Golf Club">
       <inherit name="northdirection" />
       <scenery type="boolean">false</scenery>
@@ -168,6 +171,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Marcketplace</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Marketplace Office" alias="west" to="Office">
       <inherit name="westdirection" />
       <locked type="boolean">false</locked>
@@ -194,6 +200,9 @@
     <alias>Alekhine's Home</alias>
     <objectslistprefix>I could see</objectslistprefix>
     <description>Home</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="AlekhinesHome Marketplace" alias="west" to="Marketplace">
       <inherit name="westdirection" />
       <locked type="boolean">false</locked>
@@ -215,6 +224,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Church</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Church Apartment" alias="west" to="Apartment Complex">
       <inherit name="westdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -235,6 +247,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Outskirts</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Outskirts SewageDump" alias="west" to="Sewage Dump">
       <inherit name="westdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -250,6 +265,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Resort</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Resort AlekhinesHome" alias="south" to="Alekhines Home">
       <inherit name="southdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -265,6 +283,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>School</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="School Palace" alias="north" to="Palace">
       <inherit name="northdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -286,6 +307,9 @@
     <alias>Rookter's Home</alias>
     <objectslistprefix>I could see</objectslistprefix>
     <description>Rookters</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Rookters School" alias="north" to="School">
       <inherit name="northdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -313,6 +337,9 @@
       UnlockExit (Downtown Apartments)
       msg ("I arrive at the crime scene, stepping past the police tape I see a mangled body lying in the Alley.")
     </firstenter>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Alley SlumNeighbourhood" alias="west" to="Slum Neighbourhood">
       <inherit name="westdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -344,6 +371,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Sewage Dump</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="SewageDump Apartments" alias="north" to="Apartment Complex">
       <inherit name="northdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -364,6 +394,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Goverment Offices</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="GovermentOffices Marketplace" alias="south" to="Marketplace">
       <inherit name="southdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -384,6 +417,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Apartments</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Apartments Maketplace" alias="north" to="Marketplace">
       <inherit name="northdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -409,6 +445,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Golf Club</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="GolfClub Palace" alias="west" to="Palace">
       <inherit name="westdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -429,6 +468,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Downtown</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Downtown Office" alias="north" to="Office">
       <inherit name="northdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -455,6 +497,9 @@
     <usedefaultprefix />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Palace</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="Palace GolfClub" alias="east" to="Golf Club">
       <inherit name="eastdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -470,6 +515,9 @@
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
     <description>Slums</description>
+    <enter type="script">
+      MoveObjectHere (Forsyth)
+    </enter>
     <exit name="SlumNeighbourhood Alley" alias="east" to="Alley">
       <inherit name="eastdirection" />
       <lockmessage>I don't need to go this way</lockmessage>
@@ -489,11 +537,14 @@
       wait {
         MoveObject (player, Office)
       }
+      Counter = 1
     </firstenter>
     <object name="player">
       <inherit name="editor_object" />
       <inherit name="editor_player" />
       <alias>Alekhine</alias>
+      <ondrop type="script">
+      </ondrop>
       <object name="Map">
         <inherit name="editor_object" />
         <displayverbs type="stringlist">
@@ -516,4 +567,10 @@
     <pattern>shoot</pattern>
     <defaultexpression>"You can't shoot " + object.article + "."</defaultexpression>
   </verb>
+  <turnscript name="Timer">
+    <enabled />
+    <script>
+      Counter = "Counter" + 1
+    </script>
+  </turnscript>
 </asl>
