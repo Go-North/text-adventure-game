@@ -132,12 +132,12 @@
       <take />
       <takemsg>Got it.</takemsg>
       <visible />
+      <drop type="boolean">false</drop>
       <ontake type="script"><![CDATA[
         msg ("\"The newest murder in town, down at the slums, happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/>Always enthusiastic, that guy.")
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
       ]]></ontake>
-      <drop type="boolean">false</drop>
     </object>
     <object name="Drawer">
       <inherit name="editor_object" />
@@ -214,6 +214,23 @@
       <inherit name="editor_object" />
       <scenery />
       <look><![CDATA[I peeked between the blinds.<br/>Dreary, as usual.]]></look>
+    </object>
+    <object name="The Clues">
+      <inherit name="editor_object" />
+      <alias>the clues</alias>
+      <alt type="stringlist">
+        <value>clues</value>
+      </alt>
+      <scenery />
+      <visible type="boolean">false</visible>
+      <review type="script"><![CDATA[
+        msg ("Forsyth and I laid our notes upon the desk and sat by either side. After lighting up our respective cigarettes, we mulled over the facts 'til late.")
+        MakeObjectInvisible (The Clues)
+        wait {
+          msg ("\"Well, we've got a good start, but there's too many facts missing at this point,\" my assistant admitted. \"Hopefully tomorrow will produce more leads.\"<br/><br/>I agreed.<br/><br/>\"I've got to get home now, you'd do well to do the same. Goodnight, Alekhine.\"<br/><br/>Forsyth put on his coat and left the office.<br/><br/>He had a point. One cannot investigate on no sleep. Perhaps tomorrow will lead us closer to solving this murder...")
+          finish
+        }
+      ]]></review>
     </object>
   </object>
   <object name="Marketplace">
@@ -412,10 +429,6 @@
     </exit>
     <object name="Ponder">
       <inherit name="editor_object" />
-      <look type="script"><![CDATA[
-        msg ("Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds.  But this is one of the reasons we call the people from the slums pawns, because their fate is decided by someone else. As I walk past his right side I <b> teeth marks</b> on his neck, I should really take a closer look at those.")
-        MakeObjectVisible (Teeth marks)
-      ]]></look>
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
@@ -424,6 +437,12 @@
       </inventoryverbs>
       <alias>body</alias>
       <visible />
+      <look type="script"><![CDATA[
+        msg ("Ponder's mangled body lied flayed across the alley. It was quite obvious that whoever did this did so out of rage. He had multiple joints broken and bent in unnatural ways, and mutiple puncture wounds. Well, that's is one of the reasons we call the people from the slums pawns: their fate is decided by someone else. As I walked past his right side I saw <b> teeth marks</b> on his neck, I thought I should take a closer look at those.")
+        MakeObjectVisible (Teeth marks)
+      ]]></look>
+      <gender>he</gender>
+      <article>him</article>
     </object>
     <object name="Police Officer">
       <inherit name="editor_object" />
@@ -434,25 +453,29 @@
         <value>Look at</value>
       </inventoryverbs>
       <drop type="boolean">false</drop>
-      <look>A bit heavier of an individual, he glances around casually, not working that hard, which is understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
+      <look>A bit heavier of an individual, he glanced around casually, not working that hard. Understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
       <speak type="script"><![CDATA[
         if (player.turns < 100) {
-          msg ("\"We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apperently it happened rather quickly, the only disturbing part was that the perpetrator just stared into the victim's eyes for a minute then left.... We asked a few people who were nearby, apperently there was a person from the middle class walking through here before the murder. We speculate the target of the killing was probably the this middle class citizen, since this little guy is from the slums and not really worth killing, and it would make sense if he interfered, and wasn't the original target.\"")
+          msg ("\"We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apparently it happened rather quickly; the only disturbing part was that the perpetrator just stared into the victim's eyes before leaving... We asked a few people who were nearby what they saw, and apparently there was a person from the middle class walking through here before the murder. We speculate the target of the killing was probably the this middle class citizen and this little guy just got in the way.\"")
         }
         else if (player.turns < 200) {
           msg ("\"I'm considering flipping a coin to decide if I whould throw the body upside down or right side up into the sewage dump.\"")
         }
       ]]></speak>
+      <gender>he</gender>
+      <article>him</article>
     </object>
     <object name="Middle Class Citizen">
       <inherit name="editor_object" />
-      <look>Probably one of the middle class citizens that has an ego that isn't to blown out of proportion. Couldn't see him in the slums if he had an inflated one like most of the other middle class citizens. From how he paces it seems that he is most likely classified as a knight, which I've always found to be one of the odder of the middle class types, with there odd movements. Never in a straight line. </look>
-      <speak type="script">
-        msg ("\"I can't describe what he looks like if that's what your hoping for\", he said with a rather calm voice. \"Whoever it was had a hood covering their face, I could only see the white of their eyes and the glisten of their teeth as he tore at that pawn.\" He shifts his weight' \"Glad that pawn jumped in to help me, it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways after he jumped in, I was able to turn and run, Guess who ever it was knew they couldn't keep up.\"")
-      </speak>
+      <look>Probably one of the middle class citizens that has an ego that isn't to blown out of proportion. Wouldn't see him in the slums if he had an inflated one like most of the other middle class citizens. From how he paces, it seems that he is most likely classified as a knight, which I've always found to be one of the odder of the middle class types, with their strange movements. Never in a straight line.</look>
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
+      <speak type="script">
+        msg ("\"I can't describe what he looks like if that's what your hoping for\", he said with a rather calm voice. \"Whoever it was had a hood covering their face, I could only see the white of their eyes and the glisten of their teeth as he tore at that pawn.\" He shifted his weight. \"Glad that pawn jumped in to help me, it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways, after he jumped in, I was able to turn and run, Guess whoever it was knew they couldn't keep up.\"")
+      </speak>
+      <gender>he</gender>
+      <article>him</article>
     </object>
     <object name="Teeth marks">
       <inherit name="editor_object" />
@@ -462,10 +485,12 @@
       <inventoryverbs type="stringlist">
         <value>Look at</value>
       </inventoryverbs>
-      <look type="script">
-        msg ("I lean closer and rolled his head to the left to better see the markings. As his head flops sideways it shows that these bite marks are only one of a few, and there is even a chunk of his neck missing. Looking around I can't see it anywhere nearby, which is odd. Most of the time the perpetrator doesn't eat his victim, especially when it comes to a pawn in the slums. ")
-      </look>
       <visible type="boolean">false</visible>
+      <look type="script"><![CDATA[
+        msg ("I lean closer and rolled his head to the left to better see the markings. As his head flops sideways it shows that these bite marks are only one of a few, and there is even a chunk of his neck missing. Looking around I can't see it anywhere nearby, which is odd. Most of the time the perpetrator doesn't eat his victim, especially when it comes to a pawn in the slums. ")
+        msg ("\"Gruesome,\" Forsyth muttered. \"Once you've finished interviewing anyone you see as relevant, I suggest we head back to the office to <b>review the clues</b>.")
+        MakeObjectVisible
+      ]]></look>
     </object>
   </object>
   <object name="Sewage Dump">
@@ -568,7 +593,7 @@
   <object name="Downtown">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Downtown</description>
+    <description><![CDATA[<b>Downtown</b>: Always bustling with people, fenced in by a multitude skyscrapers so tall they block out the sun. Well, they would if one could ever see it.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
@@ -727,4 +752,9 @@
       }
     ]]></script>
   </turnscript>
+  <verb>
+    <property>review</property>
+    <pattern>review</pattern>
+    <defaultexpression>"You can't review " + object.article + "."</defaultexpression>
+  </verb>
 </asl>
