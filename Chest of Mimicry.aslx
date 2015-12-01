@@ -87,6 +87,23 @@
           if (player.turns < 100) {
             msg ("\"This pawn definitly was killed out of anger, but most of the time people in the slums still try and be cleaner when they kill somebody, to at least try to avaid retaliation. While this is the most public killing since that murder a few years back with the children. At least this pawn had lived a decent amount of his life.\"")
           }
+          else if (player.turns < 200) {
+            msg ("\"That police officer still hasn't disposed of the body yet, almost makes you want to report him to the the othetr classes for not pulling his weight.\"")
+          }
+          else {
+            msg ("\"You can still see the bloody mess that was created here. Man did the pawn spray blood.\"")
+          }
+        }
+        else if (game.pov.parent = Office) {
+          if (player.turns < 100) {
+            msg ("\"As much as our superiors are worried about this case, I think it's fine.\" Forsyth said. \"There are some odd details but nothing you can't blame on the slums.\"")
+          }
+          else if (player.turns < 200) {
+            msg ("\"This case seems somewhat related to our fisrt killing.\" Forsyth relied to me. \"The postioning relative to yesturday's case is hard to ignore.\"")
+          }
+          else if (player.turns < 300) {
+            msg ("Forsyth looked at me intently, \"The movement patterns between these cases makes me think of a group of oddlings that usually get stuck in the slums instead of making there way into the poor class, where most oddlings reside. Most people call them morphlings.\"")
+          }
         }
         else {
           msg ("\"We should really get back to work.\"")
@@ -344,13 +361,19 @@
   <object name="Alley">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Alley</description>
+    <description type="script"><![CDATA[
+      if (player.turns < 200) {
+        msg ("<b>Alley</b>: I arrive at the crime scene, stepping past the police tape I see a mangled body lying in the Alley.")
+      }
+      else {
+        msg ("<b>Alley</b>: Looks neater wihtout a dead body lying in the streets")
+      }
+    ]]></description>
     <firstenter type="script">
       UnlockExit (Office School)
       UnlockExit (Office Marketplace)
       UnlockExit (Downtown Rookters)
       UnlockExit (Downtown Apartments)
-      msg ("I arrive at the crime scene, stepping past the police tape I see a mangled body lying in the Alley.")
     </firstenter>
     <enter type="script">
       MoveObjectHere (Forsyth)
@@ -372,7 +395,10 @@
     </exit>
     <object name="Ponder">
       <inherit name="editor_object" />
-      <look>Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds.  But this is one of the reasons we call the people from the slums pawns, because their fate is decided by someone else.</look>
+      <look type="script"><![CDATA[
+        msg ("Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds.  But this is one of the reasons we call the people from the slums pawns, because their fate is decided by someone else. As I walk past his right side I <b> teeth marks</b> on his neck, I should really take a closer look at those.")
+        MakeObjectVisible (Teeth marks)
+      ]]></look>
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
@@ -380,18 +406,7 @@
         <value>Look at</value>
       </inventoryverbs>
       <alias>body</alias>
-      <object name="Teeth marks">
-        <inherit name="editor_object" />
-        <displayverbs type="stringlist">
-          <value>Look at</value>
-        </displayverbs>
-        <inventoryverbs type="stringlist">
-          <value>Look at</value>
-        </inventoryverbs>
-        <look type="script">
-          msg ("I lean closer and rolled his head to the left to better see the markings. As his head flops sideways it shows that these bite marks are only one of a few, and there is even a chunk of his neck missing. Looking around I can't see it anywhere nearby, which is odd. Most of the time the perpetrator doesn't eat his victim, especially when it comes to a pawn in the slums. ")
-        </look>
-      </object>
+      <visible />
     </object>
     <object name="Police Officer">
       <inherit name="editor_object" />
@@ -418,6 +433,22 @@
       <speak type="script">
         msg ("\"I can't describe what he looks like if that's what your hoping for\", he said with a rather calm voice. \"Whoever it was had a hood covering their face, I could only see the white of their eyes and the glisten of their teeth as he tore at that pawn.\" He shifts his weight' \"Glad that pawn jumped in to help me, it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways after he jumped in, I was able to turn and run, Guess who ever it was knew they couldn't keep up.\"")
       </speak>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+    </object>
+    <object name="Teeth marks">
+      <inherit name="editor_object" />
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <look type="script">
+        msg ("I lean closer and rolled his head to the left to better see the markings. As his head flops sideways it shows that these bite marks are only one of a few, and there is even a chunk of his neck missing. Looking around I can't see it anywhere nearby, which is odd. Most of the time the perpetrator doesn't eat his victim, especially when it comes to a pawn in the slums. ")
+      </look>
+      <visible type="boolean">false</visible>
     </object>
   </object>
   <object name="Sewage Dump">
@@ -658,6 +689,8 @@
         msg ("I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MakeObjectInvisible (Case File 2)
         MakeObjectInvisible (Police Officer)
+        MakeObjectInvisible (Ponder)
+        MakeObjectInvisible (Teeth marks)
       }
       else if (player.turns = 300) {
         msg ("")
