@@ -80,7 +80,7 @@
         <value>forsyth</value>
         <value>assistant</value>
       </alt>
-      <look>Forsyth, my assistant.</look>
+      <look>Forsyth, my trusty assistant. He looked back at me inquisitively.</look>
       <usestandardverblist type="boolean">false</usestandardverblist>
       <speak type="script"><![CDATA[
         if (game.pov.parent = Alley) {
@@ -115,11 +115,11 @@
       <take />
       <takemsg>Got it.</takemsg>
       <visible />
-      <ontake type="script">
-        msg ("\"The newest murder in town, down at the slums, happened in the Alley\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway.\"")
+      <ontake type="script"><![CDATA[
+        msg ("\"The newest murder in town, down at the slums, happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/>Always enthusiastic, that guy.")
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
-      </ontake>
+      ]]></ontake>
       <drop type="boolean">false</drop>
     </object>
     <object name="Drawer">
