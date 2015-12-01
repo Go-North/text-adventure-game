@@ -10,7 +10,7 @@
     <defaultbackground>White</defaultbackground>
     <author>Go North</author>
     <category>Mystery</category>
-    <enablehyperlinks />
+    <enablehyperlinks type="boolean">false</enablehyperlinks>
     <attr name="feature_pictureframe" type="boolean">false</attr>
     <showpanes type="boolean">false</showpanes>
     <showborder type="boolean">false</showborder>
@@ -25,13 +25,13 @@
     <attr name="autodescription_youcango" type="int">0</attr>
     <feature_limitinventory />
     <pov type="object">player</pov>
-    <start type="script">
-      TextFX_Typewriter ("Most people don't understand why I serve the upper class with such diligence. But most people have too large of a sense of pride to see all that the elite of this city have done for us. They think that just because our city is divided into into 4 different classes based on their abilities, that things are unfair. Those individuals don't understand that those who are treated better is because they can do more because of their abilitites. All of the trash that lives in the slums are constantly complaining about the rich, middle and poor classes exploiting them. But that is because while the rest of us have proper abilities, they can't even control their's. This is my when I was found by the elite to have abilities greater than that of the trash,  they gave me a place among the poor, saving me from what would of been a terrible life among the slums. ", 60)
-    </start>
+    <start type="script"><![CDATA[
+      msg ("Most people don't understand why I serve the upper class with such diligence. But most people have too big a sense of pride to see all that the elite of this city have done for us. They think that just because our city is segregated based on ability that things are unfair. How could it be? Greater skills grant greater privileges. All of the trash that lives in the slums constantly complain about the other classes exploiting them, but nothing will nor should be done to change this. After all, if they won't make use of what little they've got, it would be a waste for everyone else not to.<br/><br/>In any case, I, Alekhine, P.I., have decided to make a record of my days of investigation from now on. Makes things easier.<br/><br/>April 16th, '52 - This day began like any other. Quietly, boringly, at the office. So quiet...")
+    ]]></start>
   </game>
   <object name="Office">
     <inherit name="editor_room" />
-    <description><![CDATA[<b>My Office</b>: A dimly-lit room full of files and a lingering scent of smoke.]]></description>
+    <description><![CDATA[<b>My Office</b>: A dimly-lit room full of files and a lingering scent of smoke. By the blinds-covered window sits my desk and chair, and at the other end of the room, the frosted glass door with my name and title upon it.]]></description>
     <usedefaultprefix />
     <objectslistprefix>I could see</objectslistprefix>
     <beforefirstenter type="script">
@@ -85,7 +85,7 @@
       <speak type="script"><![CDATA[
         if (game.pov.parent = Alley) {
           if (player.turns < 100) {
-            msg ("\"This pawn definitly was killed out of anger, but most of the time people in the slums still try and be cleaner when they kill somebody, to at least try to avaid retaliation. While this is the most public killing since that murder a few years back with the children. At least this pawn had lived a decent amount of his life.\"")
+            msg ("\"This pawn definitely was killed out of anger, but most of the time people in the slums still try and be cleaner when they kill somebody, to at least try to avoid retaliation. However, this is the most public killing since that murder a few years back with the children. At least this guy had lived a decent amount of his life.\"")
           }
           else if (player.turns < 200) {
             msg ("\"That police officer still hasn't disposed of the body yet, almost makes you want to report him to the the othetr classes for not pulling his weight.\"")
@@ -124,7 +124,7 @@
     <object name="Case File">
       <inherit name="editor_object" />
       <alias>case file</alias>
-      <look>The folder containing all the information for the case.</look>
+      <look>The folder contained all the information for the case. Seemed a slummer was offed in the alley. How surprising.</look>
       <alt type="stringlist">
         <value>case</value>
         <value>file</value>
@@ -137,6 +137,7 @@
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
       </ontake>
+      <drop type="boolean">false</drop>
     </object>
     <object name="Drawer">
       <inherit name="editor_object" />
@@ -197,6 +198,22 @@
       <visible type="boolean">false</visible>
       <look>The folder containing all the information for the case.</look>
       <take />
+    </object>
+    <object name="Desk">
+      <inherit name="editor_object" />
+      <scenery />
+      <look>Mahogany. It has a storage drawer built in.</look>
+    </object>
+    <object name="Door">
+      <inherit name="editor_object" />
+      <alias>door</alias>
+      <scenery />
+      <look>"Alekhine, P.I."</look>
+    </object>
+    <object name="Window">
+      <inherit name="editor_object" />
+      <scenery />
+      <look><![CDATA[I peeked between the blinds.<br/>Dreary, as usual.]]></look>
     </object>
   </object>
   <object name="Marketplace">
@@ -417,6 +434,7 @@
         <value>Look at</value>
       </inventoryverbs>
       <drop type="boolean">false</drop>
+      <look>A bit heavier of an individual, he glances around casually, not working that hard, which is understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
       <speak type="script"><![CDATA[
         if (player.turns < 100) {
           msg ("\"We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apperently it happened rather quickly, the only disturbing part was that the perpetrator just stared into the victim's eyes for a minute then left.... We asked a few people who were nearby, apperently there was a person from the middle class walking through here before the murder. We speculate the target of the killing was probably the this middle class citizen, since this little guy is from the slums and not really worth killing, and it would make sense if he interfered, and wasn't the original target.\"")
@@ -425,7 +443,6 @@
           msg ("\"I'm considering flipping a coin to decide if I whould throw the body upside down or right side up into the sewage dump.\"")
         }
       ]]></speak>
-      <look>A bit heavier of an individual, he glances around casually, not working that hard, which is understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
     </object>
     <object name="Middle Class Citizen">
       <inherit name="editor_object" />
