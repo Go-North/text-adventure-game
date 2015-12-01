@@ -104,11 +104,12 @@
       </alt>
       <take />
       <takemsg>Got it.</takemsg>
+      <visible />
       <ontake type="script">
         msg ("\"The newest murder in town, down at the slums, happened in the Alley\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway.\"")
         UnlockExit (Office Downtown)
+        SetObjectFlagOn (Case File, "Taken")
       </ontake>
-      <visible />
     </object>
     <object name="Drawer">
       <inherit name="editor_object" />
@@ -159,12 +160,16 @@
       <alias>Case File</alias>
       <visible type="boolean">false</visible>
       <look>The folder containing all the information for the case.</look>
+      <take />
+      <ontake type="script">
+      </ontake>
     </object>
     <object name="Case File 3">
       <inherit name="editor_object" />
       <alias>Case File</alias>
       <visible type="boolean">false</visible>
       <look>The folder containing all the information for the case.</look>
+      <take />
     </object>
   </object>
   <object name="Marketplace">
@@ -357,7 +362,7 @@
     </exit>
     <object name="Ponder">
       <inherit name="editor_object" />
-      <look>Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds.</look>
+      <look>Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds. </look>
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
@@ -365,6 +370,26 @@
         <value>Look at</value>
       </inventoryverbs>
       <alias>body</alias>
+      <object name="Clothes">
+        <inherit name="editor_object" />
+      </object>
+    </object>
+    <object name="Police Officer">
+      <inherit name="editor_object" />
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <inventoryverbs type="stringlist">
+        <value>Look at</value>
+      </inventoryverbs>
+      <drop type="boolean">false</drop>
+      <speak type="script">
+        msg ("We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. ")
+        if (game.pov.parent = Alley) {
+          if () {
+          }
+        }
+      </speak>
     </object>
   </object>
   <object name="Sewage Dump">
@@ -545,6 +570,13 @@
       <alias>Alekhine</alias>
       <ondrop type="script">
       </ondrop>
+      <statusattributes type="stringdictionary">
+        <item>
+          <key>turns</key>
+          <value>Turns: !</value>
+        </item>
+      </statusattributes>
+      <turns type="int">0</turns>
       <object name="Map">
         <inherit name="editor_object" />
         <displayverbs type="stringlist">
@@ -554,11 +586,11 @@
         <inventoryverbs type="stringlist">
           <value>Look at</value>
         </inventoryverbs>
-        <ontake type="script">
-        </ontake>
         <volume type="int">0</volume>
         <look>{img:grid.png}</look>
         <drop type="boolean">false</drop>
+        <ontake type="script">
+        </ontake>
       </object>
     </object>
   </object>
@@ -567,10 +599,11 @@
     <pattern>shoot</pattern>
     <defaultexpression>"You can't shoot " + object.article + "."</defaultexpression>
   </verb>
-  <turnscript name="Timer">
+  <command />
+  <turnscript>
     <enabled />
     <script>
-      Counter = "Counter" + 1
+      player.turns = player.turns + 1
     </script>
   </turnscript>
 </asl>
