@@ -613,7 +613,7 @@
     <enabled />
     <script><![CDATA[
       player.turns = player.turns + 1
-      if (player.turns = 2) {
+      if (player.turns = 100) {
         msg (" ")
         msg ("Damn the sun is getting low, well time to head home and call it a night. Can't wait to get rid of this muck from the slums that never seems to fail you if you head in there.")
         MoveObject (player, Alekhines Home)
