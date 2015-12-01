@@ -31,7 +31,7 @@
   </game>
   <object name="Office">
     <inherit name="editor_room" />
-    <description><![CDATA[<b>My Office</b>: A dimly-lit room full of files and a lingering scent of smoke.]]></description>
+    <description><![CDATA[<b>My Office</b>: A dimly-lit room full of files and a lingering scent of smoke. By the blinds-covered window sits my desk and chair, and at the other end of the room, the frosted glass door with my name and title upon it.]]></description>
     <usedefaultprefix />
     <objectslistprefix>I could see</objectslistprefix>
     <beforefirstenter type="script">
@@ -85,7 +85,7 @@
       <speak type="script"><![CDATA[
         if (game.pov.parent = Alley) {
           if (player.turns < 100) {
-            msg ("\"This pawn definitly was killed out of anger, but most of the time people in the slums still try and be cleaner when they kill somebody, to at least try to avaid retaliation. While this is the most public killing since that murder a few years back with the children. At least this pawn had lived a decent amount of his life.\"")
+            msg ("\"This pawn definitely was killed out of anger, but most of the time people in the slums still try and be cleaner when they kill somebody, to at least try to avoid retaliation. However, this is the most public killing since that murder a few years back with the children. At least this guy had lived a decent amount of his life.\"")
           }
         }
         else {
@@ -107,7 +107,7 @@
     <object name="Case File">
       <inherit name="editor_object" />
       <alias>case file</alias>
-      <look>The folder containing all the information for the case.</look>
+      <look>The folder contained all the information for the case. Seemed a slummer was offed in the alley. How surprising.</look>
       <alt type="stringlist">
         <value>case</value>
         <value>file</value>
@@ -120,6 +120,7 @@
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
       </ontake>
+      <drop type="boolean">false</drop>
     </object>
     <object name="Drawer">
       <inherit name="editor_object" />
@@ -180,6 +181,22 @@
       <visible type="boolean">false</visible>
       <look>The folder containing all the information for the case.</look>
       <take />
+    </object>
+    <object name="Desk">
+      <inherit name="editor_object" />
+      <scenery />
+      <look>Mahogany. It has a storage drawer built in.</look>
+    </object>
+    <object name="Door">
+      <inherit name="editor_object" />
+      <alias>door</alias>
+      <scenery />
+      <look>"Alekhine, P.I."</look>
+    </object>
+    <object name="Window">
+      <inherit name="editor_object" />
+      <scenery />
+      <look><![CDATA[I peeked between the blinds.<br/>Dreary, as usual.]]></look>
     </object>
   </object>
   <object name="Marketplace">
