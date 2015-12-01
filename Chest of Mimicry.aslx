@@ -26,7 +26,7 @@
     <feature_limitinventory />
     <pov type="object">player</pov>
     <start type="script">
-      TextFX_Typewriter (" Most people don't understand why I serve the upper class with such diligence. But most people have too large of a sense of pride to see all that the elite of this city have done for us. All of the trash that lives in the slums are constantly complaining about how they are treated by the other rich, middle and poor classes. But that is because while the rest of us have proper abilities, they can't even control their's. This is my when I was found by the elite to have abilities greater than that of the trash, they gave me a place among the poor, saving me from what would of been a terrible life.", 80)
+      TextFX_Typewriter ("Most people don't understand why I serve the upper class with such diligence. But most people have too large of a sense of pride to see all that the elite of this city have done for us. They think that just because our city is divided into into 4 different classes based on their abilities, that things are unfair. Those individuals don't understand that those who are treated better is because they can do more because of their abilitites. All of the trash that lives in the slums are constantly complaining about the rich, middle and poor classes exploiting them. But that is because while the rest of us have proper abilities, they can't even control their's. This is my when I was found by the elite to have abilities greater than that of the trash,  they gave me a place among the poor, saving me from what would of been a terrible life among the slums. ", 60)
     </start>
   </game>
   <object name="Office">
@@ -82,6 +82,16 @@
       </alt>
       <look>Forsyth, my assistant.</look>
       <usestandardverblist type="boolean">false</usestandardverblist>
+      <speak type="script"><![CDATA[
+        if (game.pov.parent = Alley) {
+          if (player.turns < 100) {
+            msg ("")
+          }
+        }
+        else {
+          msg ("We should really get back to work.")
+        }
+      ]]></speak>
       <shoot type="scriptdictionary">
         <item key="Handgun">
           ClearScreen
@@ -370,9 +380,6 @@
         <value>Look at</value>
       </inventoryverbs>
       <alias>body</alias>
-      <object name="Clothes">
-        <inherit name="editor_object" />
-      </object>
     </object>
     <object name="Police Officer">
       <inherit name="editor_object" />
@@ -383,13 +390,15 @@
         <value>Look at</value>
       </inventoryverbs>
       <drop type="boolean">false</drop>
-      <speak type="script">
-        msg ("We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. ")
-        if (game.pov.parent = Alley) {
-          if () {
-          }
+      <speak type="script"><![CDATA[
+        if (player.turns < 100) {
+          msg ("We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apperently it happened rather quickly, the only disturbing part was that the perpetrator just stared into the victim's eyes for a minute then left.... We asked a few people who were nearby, apperently there was a bishop walking through here before the murder. We speculate the bishop was probably the target, since this little guy is from the slums and not really worth killing, and it would make sense if he interfered, and wasn't the original target.")
         }
-      </speak>
+        else {
+          msg ("I'm considering flipping a coin to decide if I whould throw the body upside down or right side up into the sewage dump.")
+        }
+      ]]></speak>
+      <look>A bit heavier of an individual, he glances around casually, not working that hard, which is understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
     </object>
   </object>
   <object name="Sewage Dump">
@@ -568,8 +577,6 @@
       <inherit name="editor_object" />
       <inherit name="editor_player" />
       <alias>Alekhine</alias>
-      <ondrop type="script">
-      </ondrop>
       <statusattributes type="stringdictionary">
         <item>
           <key>turns</key>
@@ -577,6 +584,8 @@
         </item>
       </statusattributes>
       <turns type="int">0</turns>
+      <ondrop type="script">
+      </ondrop>
       <object name="Map">
         <inherit name="editor_object" />
         <displayverbs type="stringlist">
@@ -602,8 +611,33 @@
   <command />
   <turnscript>
     <enabled />
-    <script>
+    <script><![CDATA[
       player.turns = player.turns + 1
-    </script>
+      if (player.turns = 2) {
+        msg (" ")
+        msg ("Damn the sun is getting low, well time to head home and call it a night. Can't wait to get rid of this muck from the slums that never seems to fail you if you head in there.")
+        MoveObject (player, Alekhines Home)
+        MoveObject (Forsyth, Office)
+        msg ("Well time to get back to work, this bed is too lum-py to be comfortable anyways.")
+      }
+      else if (player.turns = 200) {
+        msg ("")
+        msg ("Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease")
+        MoveObject (player, Alekhines Home)
+        MoveObject (Forsyth, Office)
+        msg ("Well time to get back to work, this bed is too lum-py to be comfortable anyways.")
+      }
+      else if (player.turns = 300) {
+        msg ("")
+        msg ("Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.")
+        MoveObject (player, Alekhines Home)
+        MoveObject (Forsyth, Office)
+        msg ("Well time to get back to work, this bed is too lum-py to be comfortable anyways.")
+      }
+      else if (player.turns > 350) {
+        msg ("")
+        msg ("The bad ending, fill in with destructo tales")
+      }
+    ]]></script>
   </turnscript>
 </asl>
