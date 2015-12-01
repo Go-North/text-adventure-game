@@ -618,21 +618,21 @@
         msg ("Damn the sun is getting low, well time to head home and call it a night. Can't wait to get rid of this muck from the slums that never seems to fail you if you head in there.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("Well time to get back to work, this bed is too lum-py to be comfortable anyways.")
+        msg ("Well time to get back to work, this bed is too lumpy to be comfortable anyways.")
       }
       else if (player.turns = 200) {
         msg ("")
         msg ("Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("Well time to get back to work, this bed is too lum-py to be comfortable anyways.")
+        msg ("Well time to get back to work, this bed is too lumpy to be comfortable anyways.")
       }
       else if (player.turns = 300) {
         msg ("")
         msg ("Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("Well time to get back to work, this bed is too lum-py to be comfortable anyways.")
+        msg ("Well time to get back to work, this bed is too lumpy to be comfortable anyways.")
       }
       else if (player.turns > 350) {
         msg ("")
