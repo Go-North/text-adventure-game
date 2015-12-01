@@ -85,11 +85,11 @@
       <speak type="script"><![CDATA[
         if (game.pov.parent = Alley) {
           if (player.turns < 100) {
-            msg ("")
+            msg ("\"This pawn definitly was killed out of anger, but most of the time people in the slums still try and be cleaner when they kill somebody, to at least try to avaid retaliation. While this is the most public killing since that murder a few years back with the children. At least this pawn had lived a decent amount of his life.\"")
           }
         }
         else {
-          msg ("We should really get back to work.")
+          msg ("\"We should really get back to work.\"")
         }
       ]]></speak>
       <shoot type="scriptdictionary">
@@ -372,7 +372,7 @@
     </exit>
     <object name="Ponder">
       <inherit name="editor_object" />
-      <look>Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds. </look>
+      <look>Ponder's mangled body lies flayed across the alley, it is quite obvious that whoever did this did so out of rage. He has multiple joints broken and bent in unnatural ways, and mutiple puncture wounds.  But this is one of the reasons we call the people from the slums pawns, because their fate is decided by someone else.</look>
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
@@ -380,6 +380,18 @@
         <value>Look at</value>
       </inventoryverbs>
       <alias>body</alias>
+      <object name="Teeth marks">
+        <inherit name="editor_object" />
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
+        <inventoryverbs type="stringlist">
+          <value>Look at</value>
+        </inventoryverbs>
+        <look type="script">
+          msg ("I lean closer and rolled his head to the left to better see the markings. As his head flops sideways it shows that these bite marks are only one of a few, and there is even a chunk of his neck missing. Looking around I can't see it anywhere nearby, which is odd. Most of the time the perpetrator doesn't eat his victim, especially when it comes to a pawn in the slums. ")
+        </look>
+      </object>
     </object>
     <object name="Police Officer">
       <inherit name="editor_object" />
@@ -393,12 +405,19 @@
       <look>A bit heavier of an individual, he glances around casually, not working that hard, which is understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
       <speak type="script"><![CDATA[
         if (player.turns < 100) {
-          msg ("We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apperently it happened rather quickly, the only disturbing part was that the perpetrator just stared into the victim's eyes for a minute then left.... We asked a few people who were nearby, apperently there was a bishop walking through here before the murder. We speculate the bishop was probably the target, since this little guy is from the slums and not really worth killing, and it would make sense if he interfered, and wasn't the original target.")
+          msg ("\"We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apperently it happened rather quickly, the only disturbing part was that the perpetrator just stared into the victim's eyes for a minute then left.... We asked a few people who were nearby, apperently there was a person from the middle class walking through here before the murder. We speculate the target of the killing was probably the this middle class citizen, since this little guy is from the slums and not really worth killing, and it would make sense if he interfered, and wasn't the original target.\"")
         }
-        else {
-          msg ("I'm considering flipping a coin to decide if I whould throw the body upside down or right side up into the sewage dump.")
+        else if (player.turns < 200) {
+          msg ("\"I'm considering flipping a coin to decide if I whould throw the body upside down or right side up into the sewage dump.\"")
         }
       ]]></speak>
+    </object>
+    <object name="Middle Class Citizen">
+      <inherit name="editor_object" />
+      <look>Probably one of the middle class citizens that has an ego that isn't to blown out of proportion. Couldn't see him in the slums if he had an inflated one like most of the other middle class citizens. From how he paces it seems that he is most likely classified as a knight, which I've always found to be one of the odder of the middle class types, with there odd movements. Never in a straight line. </look>
+      <speak type="script">
+        msg ("\"I can't describe what he looks like if that's what your hoping for\", he said with a rather calm voice. \"Whoever it was had a hood covering their face, I could only see the white of their eyes and the glisten of their teeth as he tore at that pawn.\" He shifts his weight' \"Glad that pawn jumped in to help me, it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways after he jumped in, I was able to turn and run, Guess who ever it was knew they couldn't keep up.\"")
+      </speak>
     </object>
   </object>
   <object name="Sewage Dump">
@@ -618,21 +637,39 @@
         msg ("Damn the sun is getting low, well time to head home and call it a night. Can't wait to get rid of this muck from the slums that never seems to fail you if you head in there.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("Well time to get back to work, this bed is too lumpy to be comfortable anyways.")
+        msg ("")
+        msg ("I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ")
+        msg ("")
+        msg ("*Alarm*")
+        msg ("I really need to throw this in the trash one day. Time to get off to work now though. Don't want to waste my day.")
+        MakeObjectInvisible (Case File)
+        MakeObjectInvisible (Middle Class Citizen)
+        MakeObjectVisible (Case File 2)
       }
       else if (player.turns = 200) {
         msg ("")
         msg ("Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("Well time to get back to work, this bed is too lumpy to be comfortable anyways.")
+        msg ("")
+        msg ("I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ")
+        msg ("")
+        msg ("*Alarm*")
+        msg ("I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
+        MakeObjectInvisible (Case File 2)
+        MakeObjectInvisible (Police Officer)
       }
       else if (player.turns = 300) {
         msg ("")
         msg ("Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("Well time to get back to work, this bed is too lumpy to be comfortable anyways.")
+        msg ("")
+        msg ("I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ")
+        msg ("")
+        msg ("*Alarm*")
+        msg ("I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
+        MakeObjectInvisible (Case File 3)
       }
       else if (player.turns > 350) {
         msg ("")
