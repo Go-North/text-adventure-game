@@ -7,3 +7,5 @@
 [1127/234311:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
 [1128/032917:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
 [1130/222438:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
+[1201/030211:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
+[1201/030211:ERROR:gpu_process_transport_factory.cc(437)] Failed to establish GPU channel.

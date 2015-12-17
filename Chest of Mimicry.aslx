@@ -226,9 +226,21 @@
       <review type="script"><![CDATA[
         msg ("Forsyth and I laid our notes upon the desk and sat by either side. After lighting up our respective cigarettes, we mulled over the facts 'til late.")
         MakeObjectInvisible (The Clues)
-        wait {
-          msg ("<br/>\"Well, we've got a good start, but there's too many facts missing at this point,\" my assistant admitted. \"Hopefully tomorrow will produce more leads.\"<br/><br/>I agreed.<br/><br/>\"I've got to get home now; you'd do well to do the same. Goodnight, Alekhine.\"<br/><br/>Forsyth put on his coat and left the office.<br/><br/>He had a point. One cannot investigate on no sleep. Perhaps tomorrow will lead us closer to solving this murder...<br/><br/>")
-          finish
+        if (player.turns < 100) {
+          msg ("<br/>\"Well, we've got a good start, but there's too many facts missing at this point,\" my assistant admitted. \"Hopefully tomorrow will produce more leads.\"<br/><br/>I agreed.<br/><br/>\"I've got to get home now; you'd do well to do the same. Goodnight, Alekhine.\"<br/><br/>Forsyth put on his coat and left the office.<br/><br/>He had a point. One cannot investigate on no sleep. Perhaps tomorrow will lead us closer to solving this murder...")
+          player.turns = 100
+        }
+        if (player.turns > 100) {
+          if (player.turns < 200) {
+            msg ("insert stuff here ")
+            player.turns = 200
+          }
+        }
+        if (player.turns > 200) {
+          if (player.turns < 300) {
+            msg ("insert stuff here again")
+            player.turns = 300
+          }
         }
       ]]></review>
     </object>
@@ -391,6 +403,14 @@
       <lockmessage>I don't need to go this way</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
+    <object name="Rookter">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <look type="script">
+      </look>
+      <drop type="boolean">false</drop>
+      <attr name="feature_edible" type="boolean">false</attr>
+    </object>
   </object>
   <object name="Alley">
     <inherit name="editor_room" />
@@ -437,12 +457,12 @@
       </inventoryverbs>
       <alias>body</alias>
       <visible />
+      <gender>he</gender>
+      <article>him</article>
       <look type="script"><![CDATA[
         msg ("Ponder's mangled body lied flayed across the alley. It was quite obvious that whoever did this did so out of rage. He had multiple joints broken and bent in unnatural ways, and mutiple puncture wounds. Well, that's is one of the reasons we call the people from the slums pawns: their fate is decided by someone else. As I walked past his right side I saw <b> teeth marks</b> on his neck, I thought I should take a closer look at those.")
         MakeObjectVisible (Teeth marks)
       ]]></look>
-      <gender>he</gender>
-      <article>him</article>
     </object>
     <object name="Police Officer">
       <inherit name="editor_object" />
@@ -454,6 +474,8 @@
       </inventoryverbs>
       <drop type="boolean">false</drop>
       <look>A bit heavier of an individual, he glanced around casually, not working that hard. Understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
+      <gender>he</gender>
+      <article>him</article>
       <speak type="script"><![CDATA[
         if (player.turns < 100) {
           msg ("\"We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apparently it happened rather quickly; the only disturbing part was that the perpetrator just stared into the victim's eyes before leaving... We asked a few people who were nearby what they saw, and apparently there was a person from the middle class walking through here before the murder. We speculate the target of the killing was probably the this middle class citizen and this little guy just got in the way.\"")
@@ -462,8 +484,6 @@
           msg ("\"I'm considering flipping a coin to decide if I whould throw the body upside down or right side up into the sewage dump.\"")
         }
       ]]></speak>
-      <gender>he</gender>
-      <article>him</article>
     </object>
     <object name="Middle Class Citizen">
       <inherit name="editor_object" />
@@ -471,11 +491,11 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
+      <gender>he</gender>
+      <article>him</article>
       <speak type="script">
         msg ("\"I can't describe what he looks like if that's what your hoping for\", he said with a rather calm voice. \"Whoever it was had a hood covering their face, I could only see the white of their eyes and the glisten of their teeth as he tore at that pawn.\" He shifted his weight. \"Glad that pawn jumped in to help me, it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways, after he jumped in, I was able to turn and run, Guess whoever it was knew they couldn't keep up.\"")
       </speak>
-      <gender>he</gender>
-      <article>him</article>
     </object>
     <object name="Teeth marks">
       <inherit name="editor_object" />
@@ -706,44 +726,28 @@
     <script><![CDATA[
       player.turns = player.turns + 1
       if (player.turns = 100) {
-        msg (" ")
-        msg ("Damn the sun is getting low, well time to head home and call it a night. Can't wait to get rid of this muck from the slums that never seems to fail you if you head in there.")
+        msg ("<br/>Damn the sun is getting low, well time to head home and call it a night. Can't wait to get rid of this muck from the slums that never seems to fail you if you head in there.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to throw this in the trash one day. Time to get off to work now though. Don't want to waste my day.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("")
-        msg ("I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ")
-        msg ("")
-        msg ("*Alarm*")
-        msg ("I really need to throw this in the trash one day. Time to get off to work now though. Don't want to waste my day.")
         MakeObjectInvisible (Case File)
         MakeObjectInvisible (Middle Class Citizen)
         MakeObjectVisible (Case File 2)
+        MakeObjectVisible (Rookter)
       }
       else if (player.turns = 200) {
-        msg ("")
-        msg ("Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease")
+        msg ("<br/>Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("")
-        msg ("I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ")
-        msg ("")
-        msg ("*Alarm*")
-        msg ("I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MakeObjectInvisible (Case File 2)
         MakeObjectInvisible (Police Officer)
         MakeObjectInvisible (Ponder)
         MakeObjectInvisible (Teeth marks)
+        MakeObjectInvisible (Rookter)
       }
       else if (player.turns = 300) {
-        msg ("")
-        msg ("Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.")
+        msg ("<br/>Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
-        msg ("")
-        msg ("I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ")
-        msg ("")
-        msg ("*Alarm*")
-        msg ("I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MakeObjectInvisible (Case File 3)
       }
       else if (player.turns > 350) {
