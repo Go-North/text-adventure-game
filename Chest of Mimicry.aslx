@@ -49,23 +49,23 @@
       <inherit name="northdirection" />
       <scenery type="boolean">false</scenery>
       <locked />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Office School" alias="west" to="School">
       <inherit name="westdirection" />
       <locked />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Office Marketplace" alias="east" to="Marketplace">
       <inherit name="eastdirection" />
       <locked />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Office Downtown" alias="south" to="Downtown">
       <inherit name="southdirection" />
       <runscript type="boolean">false</runscript>
       <locked />
-      <lockmessage>I need to check my case</lockmessage>
+      <lockmessage>I needed to check my case before heading out.</lockmessage>
     </exit>
     <object name="Forsyth">
       <inherit name="editor_object" />
@@ -134,7 +134,7 @@
       <visible />
       <drop type="boolean">false</drop>
       <ontake type="script"><![CDATA[
-        msg ("\"The newest murder in town, down at the slums, happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/>Always enthusiastic, that guy.")
+        msg ("\"The newest murder in town, down at the slums; happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/>Always enthusiastic, that guy.")
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
       ]]></ontake>
@@ -248,55 +248,72 @@
   <object name="Marketplace">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Marcketplace</description>
+    <description>Marketplace</description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
     <exit name="Marketplace Office" alias="west" to="Office">
       <inherit name="westdirection" />
       <locked type="boolean">false</locked>
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Marketplace Apartments" alias="south" to="Apartment Complex">
       <inherit name="southdirection" />
       <locked type="boolean">false</locked>
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Marketplace AlekhinesHome" alias="east" to="Alekhines Home">
       <inherit name="eastdirection" />
       <locked type="boolean">false</locked>
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Marketplace GovermentOffices" alias="north" to="Government Offices">
       <inherit name="northdirection" />
       <locked />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
   </object>
   <object name="Alekhines Home">
     <inherit name="editor_room" />
     <alias>Alekhine's Home</alias>
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Home</description>
+    <description><![CDATA[<b>Home</b>: My modest but livable abode. The kitchen and bathroom could have used a cleaning, the bed was unmade and the alarm clock was hardly holding up, but at least the GovTV was still running like new. There was no reason to touch it after you realized the buttons don't do anything, but still...<br/>The front window let in a little light.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
     <exit name="AlekhinesHome Marketplace" alias="west" to="Marketplace">
       <inherit name="westdirection" />
       <locked type="boolean">false</locked>
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="AlekhinesHome Resort" alias="north" to="Resort">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way.</lockmessage>
+      <lockmessage>I didn't need to go this way..</lockmessage>
       <locked />
     </exit>
     <exit name="AlekhinesHome Church" alias="south" to="Church">
       <inherit name="southdirection" />
       <visible type="boolean">false</visible>
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
+    <object name="HomeWindow">
+      <inherit name="editor_object" />
+      <alias>window</alias>
+      <scenery />
+      <look>Looking out the window only revealed the houses across the street. Grey cube after grey cube, like mine, the only difference being the number upon it.</look>
+    </object>
+    <object name="GovTV">
+      <inherit name="editor_object" />
+      <alt type="stringlist">
+        <value>TV</value>
+        <value>tv</value>
+        <value>govtv</value>
+        <value>GovTV</value>
+      </alt>
+      <scenery />
+      <look>The news was on, of course. The upper class did something good, the lowest did something bad, the weather was gloomy. A standard day. Wouldn't notice if this was a rerun, actually.</look>
+    </object>
   </object>
   <object name="Church">
     <inherit name="editor_room" />
@@ -307,17 +324,17 @@
     </enter>
     <exit name="Church Apartment" alias="west" to="Apartment Complex">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Church AlekhinesHome" alias="north" to="Alekhines Home">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Church Outskirts" alias="south" to="Outskirts">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
   </object>
@@ -330,12 +347,12 @@
     </enter>
     <exit name="Outskirts SewageDump" alias="west" to="Sewage Dump">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
-    <exit name="Outskirts Curch" alias="north" to="Church">
+    <exit name="Outskirts Church" alias="north" to="Church">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
   </object>
@@ -348,12 +365,12 @@
     </enter>
     <exit name="Resort AlekhinesHome" alias="south" to="Alekhines Home">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Resort GovermentOffices" alias="west" to="Government Offices">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
   </object>
@@ -366,17 +383,17 @@
     </enter>
     <exit name="School Palace" alias="north" to="Palace">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
     <exit name="School Office" alias="east" to="Office">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="School Rookters" alias="south" to="Rookters">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
   </object>
@@ -390,26 +407,26 @@
     </enter>
     <exit name="Rookters School" alias="north" to="School">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Rookters SlumNeighbourhood" alias="south" to="Slum Neighbourhood">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Rookters Downtown" alias="east" to="Downtown">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <object name="Rookter">
       <inherit name="editor_object" />
       <visible type="boolean">false</visible>
-      <look type="script">
-      </look>
       <drop type="boolean">false</drop>
       <attr name="feature_edible" type="boolean">false</attr>
+      <look type="script">
+      </look>
     </object>
   </object>
   <object name="Alley">
@@ -434,17 +451,17 @@
     </enter>
     <exit name="Alley SlumNeighbourhood" alias="west" to="Slum Neighbourhood">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Alley Downtown" alias="north" to="Downtown">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Alley SewageDump" alias="east" to="Sewage Dump">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <object name="Ponder">
@@ -522,17 +539,17 @@
     </enter>
     <exit name="SewageDump Apartments" alias="north" to="Apartment Complex">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="SewageDump Alley" alias="west" to="Alley">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="SewageDump Outskirts" alias="east" to="Outskirts">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
   </object>
@@ -545,17 +562,17 @@
     </enter>
     <exit name="GovermentOffices Marketplace" alias="south" to="Marketplace">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="GovermentOffices GolfClub" alias="west" to="Golf Club">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
     <exit name="GovermentOffices Resort" alias="east" to="Resort">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
   </object>
@@ -568,22 +585,22 @@
     </enter>
     <exit name="Apartments Maketplace" alias="north" to="Marketplace">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Apartments Downtown" alias="west" to="Downtown">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Apartments Church" alias="east" to="Church">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Apartments SewageDump" alias="south" to="Sewage Dump">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
   </object>
@@ -596,17 +613,17 @@
     </enter>
     <exit name="GolfClub Palace" alias="west" to="Palace">
       <inherit name="westdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
     <exit name="GolfClub Office" alias="south" to="Office">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="GolfClub GovermentOffices" alias="east" to="Government Offices">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
   </object>
@@ -619,23 +636,23 @@
     </enter>
     <exit name="Downtown Office" alias="north" to="Office">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Downtown Apartments" alias="east" to="Apartment Complex">
       <inherit name="eastdirection" />
       <locked />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Downtown Alley" alias="south" to="Alley">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="Downtown Rookters" alias="west" to="Rookters">
       <inherit name="westdirection" />
       <locked />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
   </object>
   <object name="Palace">
@@ -648,12 +665,12 @@
     </enter>
     <exit name="Palace GolfClub" alias="east" to="Golf Club">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
     <exit name="Palace School" alias="south" to="School">
       <inherit name="southdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
   </object>
@@ -666,12 +683,12 @@
     </enter>
     <exit name="SlumNeighbourhood Alley" alias="east" to="Alley">
       <inherit name="eastdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
     <exit name="SlumNeighbourhood Rookters" alias="north" to="Rookters">
       <inherit name="northdirection" />
-      <lockmessage>I don't need to go this way</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
   </object>
@@ -725,16 +742,19 @@
     <enabled />
     <script><![CDATA[
       player.turns = player.turns + 1
-      if (player.turns = 100) {
-        msg ("<br/>Damn the sun is getting low, well time to head home and call it a night. Can't wait to get rid of this muck from the slums that never seems to fail you if you head in there.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to throw this in the trash one day. Time to get off to work now though. Don't want to waste my day.")
-        MoveObject (player, Alekhines Home)
-        MoveObject (Forsyth, Office)
-        MakeObjectInvisible (Case File)
-        MakeObjectInvisible (Middle Class Citizen)
-        MakeObjectVisible (Case File 2)
-        MakeObjectVisible (Rookter)
+      if (player.turns = 101) {
+        msg ("<br/>The sun had set; time to head home and call it a night. Couldn't wait to get rid of this muck from the slums that never seems to fail you if you head in there.<br/><br/>I was too tired to take a proper shower. I fell into bed, hoping my alarm was set correctly.<br/><br/>Zzz...")
+        wait {
+          msg ("A harsh ringing roused me from my slumber. My fist responded.<br/><br/>\"I really need to throw this in the trash one day\", I thought. It was time to get off to work. Didn't want to waste my day.")
+          MoveObject (player, Alekhines Home)
+          MoveObject (Forsyth, Office)
+          MakeObjectInvisible (Case File)
+          MakeObjectInvisible (Middle Class Citizen)
+          MakeObjectVisible (Case File 2)
+          MakeObjectVisible (Rookter)
+        }
       }
-      else if (player.turns = 200) {
+      else if (player.turns = 201) {
         msg ("<br/>Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
@@ -744,7 +764,7 @@
         MakeObjectInvisible (Teeth marks)
         MakeObjectInvisible (Rookter)
       }
-      else if (player.turns = 300) {
+      else if (player.turns = 301) {
         msg ("<br/>Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
