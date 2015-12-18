@@ -26,7 +26,7 @@
     <feature_limitinventory />
     <pov type="object">player</pov>
     <start type="script"><![CDATA[
-      msg ("Most people don't understand why I serve the upper class with such diligence. But most people have too big a sense of pride to see all that the elite of this city have done for us. They think that just because our city is segregated based on ability that things are unfair. How could it be? Greater skills grant greater privileges. All of the trash that lives in the slums constantly complain about the other classes exploiting them, but nothing will nor should be done to change this. After all, if they won't make use of what little they've got, it would be a waste for everyone else not to.<br/><br/>In any case, I, Alekhine, P.I., have decided to make a record of my days of investigation from now on. Makes things easier.<br/><br/>April 16th, '52 - This day began like any other. Quietly, boringly, at the office. So quiet...")
+      msg ("Most people don't understand why I serve the upper class with such diligence. But most people have too big a sense of pride to see all that the elite of this city have done for us. They think that just because our city is segregated based on ability that things are unfair. How could it be? Greater skills grant greater privileges. All of the trash that lives in the slums constantly complain about the other classes exploiting them, but nothing will nor should be done to change this. After all, if they won't make use of what little they've got, it would be a waste for everyone else not to.<br/><br/>In any case, I, Alekhine, P.I., have decided to make a record of my days of investigation from now on. Makes things easier.<br/><br/>April 16th, '52 - This day began like any other. Quietly, boringly, at the office in Chesterville. So quiet...")
     ]]></start>
   </game>
   <object name="Office">
@@ -88,7 +88,7 @@
             msg ("\"This pawn definitely was killed out of anger, but most of the time people in the slums still try and be cleaner when they kill somebody, to at least try to avoid retaliation. However, this is the most public killing since that murder a few years back with the children. At least this guy had lived a decent amount of his life.\"")
           }
           else if (player.turns < 200) {
-            msg ("\"That police officer still hasn't disposed of the body yet, almost makes you want to report him to the the othetr classes for not pulling his weight.\"")
+            msg ("\"That police officer still hasn't disposed of the body yet, almost makes you want to report him to the the other classes for not pulling his weight.\"")
           }
           else {
             msg ("\"You can still see the bloody mess that was created here. Man did the pawn spray blood.\"")
@@ -99,10 +99,10 @@
             msg ("\"As much as our superiors are worried about this case, I think it's fine.\" Forsyth said. \"There are some odd details but nothing you can't blame on the slums.\"")
           }
           else if (player.turns < 200) {
-            msg ("\"This case seems somewhat related to our fisrt killing.\" Forsyth relied to me. \"The postioning relative to yesturday's case is hard to ignore.\"")
+            msg ("\"This case seems somewhat related to our first killing.\" Forsyth relied to me. \"The postioning relative to yesturday's case is hard to ignore.\"")
           }
           else if (player.turns < 300) {
-            msg ("Forsyth looked at me intently, \"The movement patterns between these cases makes me think of a group of oddlings that usually get stuck in the slums instead of making there way into the poor class, where most oddlings reside. Most people call them morphlings.\"")
+            msg ("Forsyth looked at me intently, \"The movement patterns between these cases makes me think of a group of oddlings that usually get stuck in the slums instead of making their way into the poor class, where most oddlings reside. Most people call them morphlings.\"")
           }
         }
         else {
@@ -170,7 +170,7 @@
       </object>
       <object name="Handgun">
         <inherit name="editor_object" />
-        <look>Colt 1911. My trusty sidepiece. Saved my hide more than once.</look>
+        <look>My trusty sidepiece. Saved my hide more than once.</look>
         <take />
         <takemsg>Holstered.</takemsg>
         <drop type="boolean">false</drop>
@@ -187,8 +187,11 @@
       <inherit name="editor_object" />
       <alias>Case File</alias>
       <visible type="boolean">false</visible>
-      <look>The folder containing all the information for the case.</look>
+      <look>The folder containing all the information for the second case.</look>
       <take />
+      <alt type="stringlist">
+        <value>file</value>
+      </alt>
       <ontake type="script">
       </ontake>
     </object>
@@ -196,7 +199,7 @@
       <inherit name="editor_object" />
       <alias>Case File</alias>
       <visible type="boolean">false</visible>
-      <look>The folder containing all the information for the case.</look>
+      <look>The folder containing all the information for the third case.</look>
       <take />
     </object>
     <object name="Desk">
@@ -248,7 +251,7 @@
   <object name="Marketplace">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Marketplace</description>
+    <description><![CDATA[<b>Marketplace</b>: A long street lined with the stores of the city. Government approved food, clothes, and furnishings. Not much point in stopping in. Always the same old, same old.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
@@ -288,7 +291,7 @@
     </exit>
     <exit name="AlekhinesHome Resort" alias="north" to="Resort">
       <inherit name="northdirection" />
-      <lockmessage>I didn't need to go this way..</lockmessage>
+      <lockmessage>I didn't need to go this way.</lockmessage>
       <locked />
     </exit>
     <exit name="AlekhinesHome Church" alias="south" to="Church">
@@ -341,10 +344,13 @@
   <object name="Outskirts">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Outskirts</description>
+    <description><![CDATA[<b>Outskirts</b>: The far edges of the city. Not much to see here save for a clearer view of the distinct differences between the class sections of the city. The vibrant colours of the upper class slowly fade to mottled brown and grey in the lowest class area.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
+    <firstenter type="script"><![CDATA[
+      msg ("\"The city is that way,\" Forsyth said. \"Y'know, death? Clues? That way?\"<br/><br/>Smart aleck.")
+    ]]></firstenter>
     <exit name="Outskirts SewageDump" alias="west" to="Sewage Dump">
       <inherit name="westdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
@@ -377,7 +383,7 @@
   <object name="School">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>School</description>
+    <description><![CDATA[<b>School</b>: A large building planted on the western edge of the city. A barren field lay beside.<br/>This is where the children of the city come daily to learn the Curriculum, as set by the king.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
@@ -453,10 +459,10 @@
     <objectslistprefix>I could see</objectslistprefix>
     <description type="script"><![CDATA[
       if (player.turns < 200) {
-        msg ("<b>Alley</b>: I arrive at the crime scene, stepping past the police tape I see a mangled body lying in the Alley.")
+        msg ("<b>Alley</b>: I arrived at the crime scene, stepped past the police tape and saw a mangled body lying in the alley.")
       }
       else {
-        msg ("<b>Alley</b>: Looks neater wihtout a dead body lying in the streets")
+        msg ("<b>Alley</b>: Looked neater without a dead body lying in the streets.")
       }
     ]]></description>
     <firstenter type="script">
@@ -512,6 +518,11 @@
       <look>A bit heavier of an individual, he glanced around casually, not working that hard. Typicall of most oddities and understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
       <gender>he</gender>
       <article>him</article>
+      <alias>police officer</alias>
+      <alt type="stringlist">
+        <value>cop</value>
+        <value>officer</value>
+      </alt>
       <speak type="script"><![CDATA[
         if (player.turns < 100) {
           msg ("\"We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apparently it happened rather quickly; the only disturbing part was that the perpetrator just stared into the victim's eyes before leaving... We asked a few people who were nearby what they saw, and apparently there was a person from the middle class walking through here before the murder. We speculate the target of the killing was probably the this middle class citizen and this little guy just got in the way.\"")
@@ -523,12 +534,19 @@
     </object>
     <object name="Middle Class Citizen">
       <inherit name="editor_object" />
-      <look>Probably one of the middle class citizens that has an ego that isn't to blown out of proportion. Wouldn't see him in the slums if he had an inflated one like most of the other middle class citizens. From how he paces, it seems that he is most likely classified as a knight, which I've always found to be one of the odder of the middle class types, with their strange movements. Never in a straight line.</look>
+      <look>Probably one of the middle class citizens that has an ego that isn't to blown out of proportion. Wouldn't see him in the slums if he had an inflated one like most of the others. From how he paces, it seems that he is most likely classified as a knight, which I've always found to be one of the odder of the middle class types, with their strange movements. Never in a straight line.</look>
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
       <gender>he</gender>
       <article>him</article>
+      <alias>middle class citizen</alias>
+      <alt type="stringlist">
+        <value>citizen</value>
+        <value>person</value>
+        <value>man</value>
+        <value>guy</value>
+      </alt>
       <speak type="script">
         msg ("\"I can't describe what he looks like if that's what your hoping for\", he said with a rather calm voice. \"Whoever it was had a hood covering their face, I could only see the white of their eyes and the glisten of their teeth as he tore at that pawn.\" He shifted his weight. \"Glad that pawn jumped in to help me, it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways, after he jumped in, I was able to turn and run, Guess whoever it was knew they couldn't keep up.\"")
       </speak>
@@ -552,10 +570,13 @@
   <object name="Sewage Dump">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Sewage Dump</description>
+    <description><![CDATA[<b>Sewage Dump</b>: Where the non-living filth goes. Best to stay along the edges and not breathe too deeply. No one around, for good reason.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
+    <firstenter type="script">
+      msg ("\"Disgusting,\" Forsyth muttered.")
+    </firstenter>
     <exit name="SewageDump Apartments" alias="north" to="Apartment Complex">
       <inherit name="northdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
@@ -598,10 +619,13 @@
   <object name="Apartment Complex">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Apartments</description>
+    <description><![CDATA[<b>Apartment Complex</b>: A large, plain tower filled with apartments and those who live in them. This place is for those who aren't dirt but can't afford their own freestanding home.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
+    <firstenter type="script"><![CDATA[
+      msg ("<br/>I didn't have an entrance key, and doubted those inside would be of help anyway.")
+    ]]></firstenter>
     <exit name="Apartments Maketplace" alias="north" to="Marketplace">
       <inherit name="northdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
@@ -626,7 +650,7 @@
   <object name="Golf Club">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Golf Club</description>
+    <description><![CDATA[<b>Golf Club</b>: Where the many of the uppermost like to spend their days. Lush, green grass covers the rolling hills, only the occasional flag interrupting it now and then.<br/><br/>I stood at the entrance.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
@@ -678,10 +702,13 @@
     <inherit name="editor_room" />
     <usedefaultprefix />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Palace</description>
+    <description><![CDATA[<b>Palace</b>: The grand estate of the head of government, the king and queen. A bright white castle surrounded by lively gardens and hedges make up the area.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
+    <firstenter type="script"><![CDATA[
+      msg ("<br/>The palace entrance itself is heavily guarded, but Forsyth and I were cleared to be on the grounds.")
+    ]]></firstenter>
     <exit name="Palace GolfClub" alias="east" to="Golf Club">
       <inherit name="eastdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
@@ -692,11 +719,23 @@
       <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
+    <object name="King">
+      <inherit name="editor_object" />
+      <gender>he</gender>
+      <article>him</article>
+      <visible type="boolean">false</visible>
+    </object>
+    <object name="Queen">
+      <inherit name="editor_object" />
+      <gender>she</gender>
+      <article>her</article>
+      <visible type="boolean">false</visible>
+    </object>
   </object>
   <object name="Slum Neighbourhood">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Slums</description>
+    <description><![CDATA[<b>Slums</b>: Where the poorest of the poor lay their heads. Tents and ramshackle buildings dot the area. Likely where Ponder called home.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
