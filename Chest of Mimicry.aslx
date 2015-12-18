@@ -231,17 +231,20 @@
         if (player.turns < 101) {
           msg ("<br/>\"Well, we've got a good start, but there's too many facts missing at this point,\" my assistant admitted. \"Hopefully tomorrow will produce more leads.\"<br/><br/>I agreed.<br/><br/>\"I've got to get home now; you'd do well to do the same. Goodnight, Alekhine.\"<br/><br/>Forsyth put on his coat and left the office.<br/><br/>He had a point. One cannot investigate on no sleep. Perhaps tomorrow will lead us closer to solving this murder...")
           player.turns = 100
+          MakeObjectInvisible (The Clues)
         }
         if (player.turns > 101) {
           if (player.turns < 201) {
             msg ("\"So\", Forsyth sighed, \"the similarities between these two cases make them appear to be related. The bodies are equally mutilated, the crime scenes are near, and there seems to be minor cannibalism in both. Likely the same culprit. But still, who, and why? ... I have a hunch, but I need to sleep on it.\"<br/><br/>We said our goodbyes, and he left for the night.<br/><br/>I looked out the window.<br/><br/>")
             player.turns = 200
+            MakeObjectInvisible (The Clues)
           }
         }
         if (player.turns > 201) {
           if (player.turns < 301) {
             msg ("insert stuff here again")
             player.turns = 300
+            MakeObjectInvisible (The Clues)
           }
         }
       ]]></review>
@@ -348,6 +351,56 @@
       <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
+    <object name="Archbishop Laurence">
+      <inherit name="editor_object" />
+      <visible />
+      <look type="script"><![CDATA[
+        if (player.turns < 201) {
+          msg ("A sturdy priest in his cloak, standing behind a desk, scribbling something down on some paper in front of him.")
+        }
+        else if (player.turns > 201) {
+          if (player.turns < 301) {
+            msg ("I looked up at Archbishop Laurance's limp body hanging over the organ pipes, the taller organ pipes you could see protruding up through his torso. His blood had dripped down the organ pipes, leaving red stains trailing down some of the organ pipes, with blood eventually pooling on top of the white organ keys.<br/><br/>I headed up to the rafters to see him from above, I pass by the shattered rafters and stare at the bishops dead body. <br/><br/>I see a few organ pipes protruding all the way up through his chest, with the chunks of his body lodged inside the organ pipes. All except for one pipe, where a piece of the bishops body appeared to be missing. I'd better get a closer look at that <b> organ pipe</b>.")
+            MakeObjectVisible (Organ Pipe)
+          }
+        }
+      ]]></look>
+      <speak type="script"><![CDATA[
+        msg ("")
+        if (player.turns < 201) {
+          msg ("\"Welcome to the Church of our Enternal Overload, if you come back on a Sunday we'd be pleased to have you here, but since this is a weekday may you please excuse me, I have business to attend to.\" Archbishop Laurance said with an enticing voice.")
+        }
+        else if (player.turns > 201) {
+          msg ("Why did I want to talk to a corspe?")
+        }
+      ]]></speak>
+    </object>
+    <object name="Police Officer 2">
+      <inherit name="editor_object" />
+      <alias>Police Officer</alias>
+      <visible type="boolean">false</visible>
+      <look type="script">
+        msg ("The same officer as the one I met at Rookter's, he glances back at me perplexed. He definitly knows there is something eerily wrong with this situation, espicially with the similarities to the last few murders I've been looking into.")
+      </look>
+      <speak type="script">
+        msg ("\"I'd say it's nice to see you again, but honestly I'd rather whish none of us were here in this situation right now, and that includes this bishop. Shame he had to end up on top of the organ pipes like this.\" he said with an uncomfortable voice. \"And theres a piece of him missing, just like Rookter had a body part missing. There is something stange going on here. I haven't seen something like this since that last morphling was caught a few years ago. Those crime scenes were brutal to look at, just like these.\" ")
+      </speak>
+    </object>
+    <object name="Organ Pipe">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <look type="script"><![CDATA[
+        msg ("A pawn quickly runs and brings back a ladder for me at my request, I climb up the ladder so i can get a great look at the where there is a missing chunk of flesh missing from the organ pipe. <br/><br/>When I got high enough to see over his body, I leaned in closer to see this inside of the pipe. What I noticed was that the piece of his body that was supposed to be there had been removed, as the blood streaks wentsup instead of down within this pipe.<br/><br/>I relayed waht i saw to Forsyth, \"Well something -edit. Better go back to the office and <b> review the clues </b> so we can figure out what is all happening.\"")
+        MakeObjectVisible (The Clues)
+      ]]></look>
+    </object>
+    <object name="Shattered Railing">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <look type="script">
+        msg ("A shattered railing right to the west of the organ, the killer must  slammed the Archbishop through the railings which would of thrown him onto the organ pipes, which is where he laid now.")
+      </look>
+    </object>
   </object>
   <object name="Outskirts">
     <inherit name="editor_room" />
@@ -551,10 +604,10 @@
         <value>officer</value>
       </alt>
       <speak type="script"><![CDATA[
-        if (player.turns < 100) {
+        if (player.turns < 101) {
           msg ("\"We recieved the call from a civilian who witnessed this murder from the nearby slum neighbourhood. Apparently it happened rather quickly; the only disturbing part was that the perpetrator just stared into the victim's eyes before leaving... We asked a few people who were nearby what they saw, and apparently there was a person from the middle class walking through here before the murder. We speculate the target of the killing was probably the this middle class citizen and this little guy just got in the way.\"")
         }
-        else if (player.turns < 200) {
+        else if (player.turns < 201) {
           msg ("\"I'm considering flipping a coin to decide if I whould throw the body upside down or right side up into the sewage dump.\"")
         }
       ]]></speak>
@@ -966,10 +1019,13 @@
       else if (player.turns = 201) {
         msg ("<br/>The sun had set; time to head home and call it a night. Thankfully this case was out of the slums; majority of them are in that stinky pit. I didn't have to go to sleep feeling like grease this time.<br/><br/>I took a shower, the facts of the cases swirling through my mind. Why would someone commit these brutal crimes? What's the goal?<br/><br/>The thoughts continued a while as I lay in bed. Eventually, though...<br/><br/>Zzz...<br/>")
         wait {
+          msg ("The ringing again. The responding smack.<br/><br/>\"I really need to get a less lumpy matress sometime.\" It was time to get off to work now though. I wanted to learn of Forsyth's hunch.")
         }
-        msg ("The ringing again. The responding smack.<br/><br/>\"I really need to get a less lumpy matress sometime.\" It was time to get off to work now though. I wanted to learn of Forsyth's hunch.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
+        MakeObjectVisible (Police Officer 2)
+        MakeObjectVisible (Case File 3)
+        MakeObjectVisible (Shattered Railing)
         MakeObjectInvisible (Case File 2)
         MakeObjectInvisible (Police Officer)
         MakeObjectInvisible (Ponder)
@@ -981,12 +1037,15 @@
       else if (player.turns = 301) {
         msg ("Holy shit things were heating up, I need to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set...<br/><br/>Zzz...<br/>")
         wait {
-        }
         msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
         MakeObjectInvisible (Case File 3)
-        MakeObjectInvisible (Forsyth)
+        MakeObjectInvisible (Police Officer 2)
+        MakeObjectInvisible (Archbishop Laurence)
+        MakeObjectInvisible (Organ Pipe)
+        MakeObjectInvisible (Shattered Railing)
+		}
       }
       if (player.turns = 205) {
         msg ("Thunder cracked ominously in the distance.")
