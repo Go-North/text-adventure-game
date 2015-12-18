@@ -99,7 +99,7 @@
             msg ("\"As much as our superiors are worried about this case, I think it's fine.\" Forsyth said. \"There are some odd details but nothing you can't blame on the slums.\"")
           }
           else if (player.turns < 200) {
-            msg ("\"This case seems somewhat related to our first killing.\" Forsyth relied to me. \"The postioning relative to yesturday's case is hard to ignore.\"")
+            msg ("\"This case seems somewhat related to our first killing,\" Forsyth replied to me. \"The postioning relative to yesterday's case is hard to ignore.\"")
           }
           else if (player.turns < 300) {
             msg ("Forsyth looked at me intently, \"The movement patterns between these cases makes me think of a group of oddlings that usually get stuck in the slums instead of making their way into the poor class, where most oddlings reside. Most people call them morphlings.\"")
