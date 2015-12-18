@@ -226,20 +226,20 @@
       <review type="script"><![CDATA[
         msg ("Forsyth and I laid our notes upon the desk and sat by either side. After lighting up our respective cigarettes, we mulled over the facts 'til late.")
         MakeObjectInvisible (The Clues)
-        if (player.turns < 100) {
+        if (player.turns < 101) {
           msg ("<br/>\"Well, we've got a good start, but there's too many facts missing at this point,\" my assistant admitted. \"Hopefully tomorrow will produce more leads.\"<br/><br/>I agreed.<br/><br/>\"I've got to get home now; you'd do well to do the same. Goodnight, Alekhine.\"<br/><br/>Forsyth put on his coat and left the office.<br/><br/>He had a point. One cannot investigate on no sleep. Perhaps tomorrow will lead us closer to solving this murder...")
-          player.turns = 100
+          player.turns = 101
         }
-        if (player.turns > 100) {
-          if (player.turns < 200) {
+        if (player.turns > 101) {
+          if (player.turns < 201) {
             msg ("insert stuff here ")
-            player.turns = 200
+            player.turns = 201
           }
         }
-        if (player.turns > 200) {
-          if (player.turns < 300) {
+        if (player.turns > 201) {
+          if (player.turns < 301) {
             msg ("insert stuff here again")
-            player.turns = 300
+            player.turns = 301
           }
         }
       ]]></review>
@@ -426,6 +426,25 @@
       <drop type="boolean">false</drop>
       <attr name="feature_edible" type="boolean">false</attr>
       <look type="script">
+        msg ("")
+      </look>
+    </object>
+    <object name="Police Officer 1">
+      <inherit name="editor_object" />
+      <alias>Police Officer</alias>
+      <look type="script">
+        msg ("I could tell that this police officer cared about his job more than most, which is probably my he was working in the middle class area. His uniform was clean and he didn't have a lingering stench, which was a nice change.")
+      </look>
+      <visible type="boolean">false</visible>
+      <speak type="script">
+        msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must of surprised Rookter as well, none of the neighbours heard anything.\" He said rather plainly.")
+      </speak>
+    </object>
+    <object name="Rookters Window">
+      <inherit name="editor_object" />
+      <alias>Window</alias>
+      <look type="script">
+        msg ("As I near the window I can see it faces south towards the slum neighbourhood, which wouldn't be significant if it wasn't for the fact that this was the only window that had paint torn at the bottom of it.")
       </look>
     </object>
   </object>
@@ -490,7 +509,7 @@
         <value>Look at</value>
       </inventoryverbs>
       <drop type="boolean">false</drop>
-      <look>A bit heavier of an individual, he glanced around casually, not working that hard. Understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
+      <look>A bit heavier of an individual, he glanced around casually, not working that hard. Typicall of most oddities and understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
       <gender>he</gender>
       <article>him</article>
       <speak type="script"><![CDATA[
@@ -752,6 +771,7 @@
           MakeObjectInvisible (Middle Class Citizen)
           MakeObjectVisible (Case File 2)
           MakeObjectVisible (Rookter)
+          MakeObjectVisible (Police Officer 1)
         }
       }
       else if (player.turns = 201) {
@@ -763,6 +783,7 @@
         MakeObjectInvisible (Ponder)
         MakeObjectInvisible (Teeth marks)
         MakeObjectInvisible (Rookter)
+        MakeObjectInvisible (Police Officer 1)
       }
       else if (player.turns = 301) {
         msg ("<br/>Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
@@ -771,7 +792,6 @@
         MakeObjectInvisible (Case File 3)
       }
       else if (player.turns > 350) {
-        msg ("")
         msg ("The bad ending, fill in with destructo tales")
       }
     ]]></script>
