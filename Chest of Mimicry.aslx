@@ -134,11 +134,7 @@
       <visible />
       <drop type="boolean">false</drop>
       <ontake type="script"><![CDATA[
-        <<<<<<< HEAD
-        msg ("\"The newest murder in town, down at the slums; happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/><br/>Always enthusiastic, that guy.")
-        = ======
         msg ("\"The newest murder in town, down at the slums; happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need, grab your gear out your desk and then let's get to it!\"<br/>Always enthusiastic, that guy.")
-        >>>>>>> c118b73a5a6627e9f645d3202a1a66560b409321
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
         UnlockExit (Office School)
@@ -199,7 +195,7 @@
       </alt>
       <takemsg>Got it.</takemsg>
       <ontake type="script"><![CDATA[
-        msg ("\"A new murder today, victim is a guy named Rookter; happened at his house,\" Forsyth says as i read through the file. \"Apperently the crime scene has similarities to our case from yesturday, so this case was given to you. Also as suspected, since this is a rook that was killed off, this takes priority over our previous case. But since these murders may be related, we may just be dealing with one killer here.\"<br/><br/>Should of known this case would take priority over our previous case. No one care for the pawns these days, and why should we?")
+        msg ("\"A new murder today, victim is a guy named Rookter; happened at his house,\" Forsyth said as I read through the file. \"Apparently the crime scene has similarities to our case from yesturday, so this case was given to you. Also as suspected, since this is a rook that was killed off, this takes priority over our previous case. But since these murders may be related, we may just be dealing with one killer here.\"<br/><br/>Should've known this case would take priority over our previous case. No one cared for the pawns these days, and why should we?")
         UnlockExit (Office Downtown)
         UnlockExit (Office Marketplace)
         UnlockExit (Office School)
@@ -214,7 +210,7 @@
       <take />
       <takemsg>Got it.</takemsg>
       <ontake type="script"><![CDATA[
-        msg ("\"Got another case today, man were getting flooded\" Forsyth says as i read through the file. \"Apperently they think the murder is realated to the past two murders we have just been investigating. so of course they threw this case at us. But if this person is killing this fast, we had better get going, or else there will be all hell from the upper class if we fail them by not catching this murderer.\"<br/><br/>Great, now we have our superiors breathing our backs, but can't complain to much, everything I have is because of them, so I should be thankfull.<br/>")
+        msg ("\"Got another case today, man, we're getting flooded,\" Forsyth said as I read through the file. \"Apparently they think the murder is related to the past two murders we have just been investigating. So, of course, they threw this case at us. But if this person is killing this fast, we had better get going, or there'll be all hell from the upper class if we fail them by not catching this murderer.\"<br/><br/>Great, now we had our superiors breathing down our necks. Couldn't complain too much, I have all I do due to them.<br/>")
         UnlockExit (Office Downtown)
         UnlockExit (Office Marketplace)
         UnlockExit (Office School)
@@ -255,7 +251,7 @@
         }
         if (player.turns > 101) {
           if (player.turns < 201) {
-            msg ("\"So,\" Forsyth sighed, \"the similarities between these two cases make them appear to be related. The bodies are equally mutilated, the crime scenes are near, and there seems to be minor cannibalism in both. Likely the same culprit. But still, who, and why? ... I have a hunch, but I need to sleep on it.\"<br/><br/>We said our goodbyes, and he left for the night.<br/><br/>I looked out the window.<br/><br/>")
+            msg ("\"So,\" Forsyth sighed, \"the similarities between these two cases make them appear to be related. The bodies are equally mutilated, the crime scenes are near, and there seems to be minor cannibalism in both. Likely the same culprit. But still, who, and why? ... I have a hunch, but I need to sleep on it.\"<br/><br/>We said our goodbyes, and he left for the night.<br/><br/>I looked out the window.<br/>")
             player.turns = 200
             MakeObjectInvisible (The Clues)
           }
@@ -725,10 +721,13 @@
   <object name="Government Offices">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Goverment Offices</description>
+    <description><![CDATA[<b>Goverment Offices</b>: A block of government buildings, filled with workers loyally working away. Pencil pushers and bean counters for the most part, but it doesn't take too keen an eye to tell which house the police department and special operations unit.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
+    <firstenter type="script">
+      msg ("\"... And if ya see the SOU, you're just SOL!\" muttered Forsyth in sing-song.")
+    </firstenter>
     <exit name="GovermentOffices Marketplace" alias="south" to="Marketplace">
       <inherit name="southdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
@@ -1106,13 +1105,10 @@
           MakeObjectVisible (Case File 2)
           MakeObjectVisible (Rookter)
           MakeObjectVisible (Police Officer 1)
-          <<<<<<< HEAD
           LockExit (Office Downtown)
           LockExit (Office Marketplace)
           LockExit (Office School)
-          = ======
           MakeObjectVisible (Rookters Window)
-          >>>>>>> c118b73a5a6627e9f645d3202a1a66560b409321
         }
       }
       else if (player.turns = 201) {
@@ -1137,23 +1133,26 @@
         LockExit (Office School)
       }
       else if (player.turns = 301) {
-        msg ("Holy shit things were heating up, I need to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set...<br/><br/>Zzz...<br/>")
+        msg ("Holy shit things were heating up, I need to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I was too tired to take a shower, so just lied down on my bed, hoping my alarm was set...<br/><br/>Zzz...<br/>")
         wait {
           msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
           MoveObject (player, Alekhines Home)
           MoveObject (Forsyth, Office)
+          MakeObjectVisible (King)
+          MakeObjectVisible (Queen)
+          MakeObjectVisible (BishopMorphling)
+          MakeObjectVisible (Knight)
+          MakeObjectVisible (Pawn)
+          MakeObjectVisible (Rook)
           MakeObjectInvisible (Case File 3)
           MakeObjectInvisible (Police Officer 2)
           MakeObjectInvisible (Archbishop Laurence)
           MakeObjectInvisible (Organ Pipe)
           MakeObjectInvisible (Shattered Railing)
-          <<<<<<< HEAD
           UnlockExit (AlekhinesHome Resort)
           UnlockExit (Office GolfClub)
           UnlockExit (School Palace)
           UnlockExit (Marketplace GovermentOffices)
-          = ======
-          >>>>>>> c118b73a5a6627e9f645d3202a1a66560b409321
         }
       }
       if (player.turns = 205) {
