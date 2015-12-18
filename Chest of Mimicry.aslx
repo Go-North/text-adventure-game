@@ -134,7 +134,11 @@
       <visible />
       <drop type="boolean">false</drop>
       <ontake type="script"><![CDATA[
+        <<<<<<< HEAD
         msg ("\"The newest murder in town, down at the slums; happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/><br/>Always enthusiastic, that guy.")
+        = ======
+        msg ("\"The newest murder in town, down at the slums; happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need, grab your gear out your desk and then let's get to it!\"<br/>Always enthusiastic, that guy.")
+        >>>>>>> c118b73a5a6627e9f645d3202a1a66560b409321
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
         UnlockExit (Office School)
@@ -193,6 +197,7 @@
       <alt type="stringlist">
         <value>file</value>
       </alt>
+      <takemsg>Got it.</takemsg>
       <ontake type="script"><![CDATA[
         msg ("\"A new murder today, victim is a guy named Rookter; happened at his house,\" Forsyth says as i read through the file. \"Apperently the crime scene has similarities to our case from yesturday, so this case was given to you. Also as suspected, since this is a rook that was killed off, this takes priority over our previous case. But since these murders may be related, we may just be dealing with one killer here.\"<br/><br/>Should of known this case would take priority over our previous case. No one care for the pawns these days, and why should we?")
         UnlockExit (Office Downtown)
@@ -200,7 +205,6 @@
         UnlockExit (Office School)
         SetObjectFlagOn (Case File 2, "Taken")
       ]]></ontake>
-      <takemsg>Got it.</takemsg>
     </object>
     <object name="Case File 3">
       <inherit name="editor_object" />
@@ -208,6 +212,7 @@
       <visible type="boolean">false</visible>
       <look>The folder containing all the information for the third case. Looks like a bishop was killed off in the church.</look>
       <take />
+      <takemsg>Got it.</takemsg>
       <ontake type="script"><![CDATA[
         msg ("\"Got another case today, man were getting flooded\" Forsyth says as i read through the file. \"Apperently they think the murder is realated to the past two murders we have just been investigating. so of course they threw this case at us. But if this person is killing this fast, we had better get going, or else there will be all hell from the upper class if we fail them by not catching this murderer.\"<br/><br/>Great, now we have our superiors breathing our backs, but can't complain to much, everything I have is because of them, so I should be thankfull.<br/>")
         UnlockExit (Office Downtown)
@@ -215,7 +220,6 @@
         UnlockExit (Office School)
         SetObjectFlagOn (Case File 3, "Taken")
       ]]></ontake>
-      <takemsg>Got it.</takemsg>
     </object>
     <object name="Desk">
       <inherit name="editor_object" />
@@ -251,7 +255,7 @@
         }
         if (player.turns > 101) {
           if (player.turns < 201) {
-            msg ("\"So\", Forsyth sighed, \"the similarities between these two cases make them appear to be related. The bodies are equally mutilated, the crime scenes are near, and there seems to be minor cannibalism in both. Likely the same culprit. But still, who, and why? ... I have a hunch, but I need to sleep on it.\"<br/><br/>We said our goodbyes, and he left for the night.<br/><br/>I looked out the window.<br/><br/>")
+            msg ("\"So,\" Forsyth sighed, \"the similarities between these two cases make them appear to be related. The bodies are equally mutilated, the crime scenes are near, and there seems to be minor cannibalism in both. Likely the same culprit. But still, who, and why? ... I have a hunch, but I need to sleep on it.\"<br/><br/>We said our goodbyes, and he left for the night.<br/><br/>I looked out the window.<br/><br/>")
             player.turns = 200
             MakeObjectInvisible (The Clues)
           }
@@ -348,7 +352,7 @@
   <object name="Church">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description>Church</description>
+    <description><![CDATA[<b>Church</b>: Chesterville's grand church of the Eternal Overlord. It stood taller, brighter and cleaner than the buildings surrounding it.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
@@ -370,13 +374,22 @@
     <object name="Archbishop Laurence">
       <inherit name="editor_object" />
       <visible />
+      <gender>he</gender>
+      <article>him</article>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <alt type="stringlist">
+        <value>archbishop</value>
+        <value>bishop</value>
+        <value>priest</value>
+        <value>Laurence</value>
+      </alt>
       <look type="script"><![CDATA[
         if (player.turns < 201) {
-          msg ("A sturdy priest in his cloak, standing behind a desk, scribbling something down on some paper in front of him.")
+          msg ("A sturdy priest in his cloak, stood behind a desk. He scribbled something down on some paper in front of him.")
         }
         else if (player.turns > 201) {
           if (player.turns < 301) {
-            msg ("I looked up at Archbishop Laurance's limp body hanging over the organ pipes, the taller organ pipes you could see protruding up through his torso. His blood had dripped down the organ pipes, leaving red stains trailing down some of the organ pipes, with blood eventually pooling on top of the white organ keys.<br/><br/>I headed up to the rafters to see him from above, I pass by the shattered rafters and stare at the bishops dead body. <br/><br/>I see a few organ pipes protruding all the way up through his chest, with the chunks of his body lodged inside the organ pipes. All except for one pipe, where a piece of the bishops body appeared to be missing. I'd better get a closer look at that <b> organ pipe</b>.")
+            msg ("I looked up at Archbishop Laurence's limp body hanging over the organ pipes, the taller pipes you could see protruding up through his torso. His blood had dripped down, leaving red stains trailing down some of the pipes' sides, with blood eventually pooling on top of the white keys.<br/><br/>I headed up to the rafters to see him from above, I passed by the shattered rafters and stared at the bishop's dead body. <br/><br/>I see a few organ pipes protruding all the way up through his chest, with the chunks of his body lodged inside them. All except for one, where a piece of the bishop's body appeared to be missing. I'd better get a closer look at that <b> organ pipe</b>.")
             MakeObjectVisible (Organ Pipe)
           }
         }
@@ -384,35 +397,47 @@
       <speak type="script"><![CDATA[
         msg ("")
         if (player.turns < 201) {
-          msg ("\"Welcome to the Church of our Enternal Overload, if you come back on a Sunday we'd be pleased to have you here, but since this is a weekday may you please excuse me, I have business to attend to.\" Archbishop Laurance said with an enticing voice.")
+          msg ("\"Welcome to the Church of our Eternal Overlord,\" exclaimed ArchBishop Laurence, \"if you come back on a Sunday we'd be pleased to have you here, but since this is a weekday please excuse me; I have business to attend to.\"")
         }
         else if (player.turns > 201) {
-          msg ("Why did I want to talk to a corspe?")
+          msg ("Why would I want to talk to a corpse?")
         }
       ]]></speak>
     </object>
     <object name="Police Officer 2">
       <inherit name="editor_object" />
-      <alias>Police Officer</alias>
+      <alias>police officer</alias>
       <visible type="boolean">false</visible>
+      <gender>he</gender>
+      <article>him</article>
+      <alt type="stringlist">
+        <value>cop</value>
+        <value>officer</value>
+        <value>police</value>
+      </alt>
       <look type="script">
         msg ("The same officer as the one I met at Rookter's, he glances back at me perplexed. He definitly knows there is something eerily wrong with this situation, espicially with the similarities to the last few murders I've been looking into.")
       </look>
       <speak type="script">
-        msg ("\"I'd say it's nice to see you again, but honestly I'd rather whish none of us were here in this situation right now, and that includes this bishop. Shame he had to end up on top of the organ pipes like this.\" he said with an uncomfortable voice. \"And theres a piece of him missing, just like Rookter had a body part missing. There is something stange going on here. I haven't seen something like this since that last morphling was caught a few years ago. Those crime scenes were brutal to look at, just like these.\" ")
+        msg ("\"I'd say it's nice to see you again, but honestly I wish none of us were here in this situation right now, and that includes this bishop. Shame he had to end up on top of the organ like this,\" he said with an uncomfortable voice. \"And there's a piece of him missing, just like Rookter had a body part missing. There is something stange going on here. I haven't seen something like this since that last morphling was caught a few years ago. Those crime scenes were brutal to look at, just like these.\"")
       </speak>
     </object>
     <object name="Organ Pipe">
       <inherit name="editor_object" />
       <visible type="boolean">false</visible>
+      <alias>organ pipe</alias>
+      <alt type="stringlist">
+        <value>pipe</value>
+      </alt>
       <look type="script"><![CDATA[
-        msg ("A pawn quickly runs and brings back a ladder for me at my request, I climb up the ladder so i can get a great look at the where there is a missing chunk of flesh missing from the organ pipe. <br/><br/>When I got high enough to see over his body, I leaned in closer to see this inside of the pipe. What I noticed was that the piece of his body that was supposed to be there had been removed, as the blood streaks wentsup instead of down within this pipe.<br/><br/>I relayed waht i saw to Forsyth, \"Well something -edit. Better go back to the office and <b> review the clues </b> so we can figure out what is all happening.\"")
+        msg ("A pawn quickly ran and brought back a ladder for me at my request. I climbed up the ladder so I could get a good look at the where there is a chunk of flesh missing from the organ pipe. <br/><br/>When I got high enough to see over his body, I leaned in closer to see inside the pipe. What I noticed was that the piece of his body that was supposed to be there had been removed, as the blood streaks went up as well as down within this pipe.<br/><br/>I relayed what I saw to Forsyth. \"Something very serious is taking place in this city. Better go back to the office and <b> review the clues </b> so we can piece it all together.\"")
         MakeObjectVisible (The Clues)
       ]]></look>
     </object>
     <object name="Shattered Railing">
       <inherit name="editor_object" />
       <visible type="boolean">false</visible>
+      <alias>shattered railing</alias>
       <look type="script">
         msg ("A shattered railing right to the west of the organ, the killer must  slammed the Archbishop through the railings which would of thrown him onto the organ pipes, which is where he laid now.")
       </look>
@@ -460,7 +485,7 @@
   <object name="School">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description><![CDATA[<b>School</b>: A large building planted on the western edge of the city. A barren field lay beside.<br/>This is where the children of the city come daily to learn the Curriculum, as set by the king.]]></description>
+    <description><![CDATA[<b>School</b>: A large building planted on the western edge of the city. A barren field lay beside.<br/>This is where the children of the city come daily to learn The Curriculum, as set by the king.]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
@@ -517,13 +542,13 @@
       <article>him</article>
       <usedefaultprefix type="boolean">false</usedefaultprefix>
       <look type="script"><![CDATA[
-        msg ("The expression of surprise stamped into his eyes by death's cold embrace was hard not to stare at. But after pulling my eyes away and inspecting the rest of his body, I noticed some familiarities betwwen Rookter and Ponder. Most noticeable was the broken joints splayed across the floor. The most prominent feature of the body, though, was the fact that his nose was missing. I should probably look at where his <b> nose </b> was torn off.")
+        msg ("The expression of surprise stamped into his eyes by death's cold embrace was hard not to stare at. After pulling my eyes away and inspecting the rest of his body, I noticed some familiarities between Rookter and Ponder. Most noticeable was the broken joints splayed across the floor. The most prominent feature of the body, though, was the fact that his nose was missing. I should probably look at where his <b> nose </b> was torn off.")
         MakeObjectVisible (Nose)
       ]]></look>
     </object>
     <object name="Police Officer 1">
       <inherit name="editor_object" />
-      <alias>Police Officer</alias>
+      <alias>police officer</alias>
       <visible type="boolean">false</visible>
       <gender>he</gender>
       <article>him</article>
@@ -531,12 +556,13 @@
         msg ("I could tell that this police officer cared about his job more than most, which is probably why he was working in the middle class area. His uniform was clean and he didn't have a lingering stench, which was a nice change.")
       </look>
       <speak type="script">
-        msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must of surprised Rookter as well,  that look of surprise in his eyes is a dead giveaway.\" He said rather plainly. \"None of the neighbours heard anything unfortunatly.\" ")
+        msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must have surprised Rookter as well,  that look of surprise in his eyes is a dead giveaway.\" He said rather plainly. \"None of the neighbours heard anything unfortunately.\" ")
       </speak>
     </object>
     <object name="Rookters Window">
       <inherit name="editor_object" />
       <alias>window</alias>
+      <visible type="boolean">false</visible>
       <look type="script">
         msg ("As I neared the window I could see it faces southeast towards the slum neighbourhood/alley area, which wouldn't be significant if it wasn't for the fact that this was the only window that had paint scraped away at the bottom of it. Must have been how the killer got in.")
       </look>
@@ -544,8 +570,12 @@
     <object name="Nose">
       <inherit name="editor_object" />
       <visible type="boolean">false</visible>
+      <alias>nose</alias>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <prefix>a space where a</prefix>
+      <suffix>should be</suffix>
       <look type="script"><![CDATA[
-        msg ("I looked closer and I could see teeth marks and torn flesh where his nose used to be, with pieces of remaining cartilage sticking out of the hole in his face. There was no blood trail to indicate the nose being moved or thrown anywhere.<br/><br/>\"Officer, have you seen a nose anywhere in this home?\" I asked the police officer while inspecting the nearby floor.<br/><br/>\"No, which I found odd; not many people have the strength to bite a nose straight off, and I don't understand why they would, since it appears to have happened after Rookter was already dead.\" Replied the officer, clearly perplexed at the situation.<br/><br/>Forsyth turned to me, \"With all those blood droplets splattered randomly over his body, makes you think the killer ate Rookter's nose over his dead body. But even when pawns turn to cannibalism they usually eat more of the person,\" he stated as he scanned over Rookter's lifeless body. \"Anyways, when your done looking around here we can go back and <b> review the clues </b> from today at the office.\"<br/>")
+        msg ("I looked closer and I could see teeth marks and torn flesh where his nose used to be, with pieces of remaining cartilage sticking out of the hole in his face. There was no blood trail to indicate the nose being moved or thrown anywhere.<br/><br/>\"Officer, have you seen a nose anywhere in this home?\" I asked the police officer while inspecting the nearby floor.<br/><br/>\"No, which I found odd; not many people have the strength to bite a nose straight off, and I don't understand why they would, since it appears to have happened after Rookter was already dead,\" replied the officer, clearly perplexed at the situation.<br/><br/>Forsyth turned to me, \"With all those blood droplets splattered randomly over his body, makes you think the killer ate Rookter's nose over his dead body. But even when pawns turn to cannibalism they usually eat more of the person,\" he stated as he scanned over Rookter's lifeless body. \"Anyways, when you're done looking around here we can go back and <b> review the clues </b> from today at the office.\"<br/>")
         MakeObjectVisible (The Clues)
       ]]></look>
     </object>
@@ -611,7 +641,7 @@
         <value>Look at</value>
       </inventoryverbs>
       <drop type="boolean">false</drop>
-      <look>A bit heavier of an individual, he glanced around casually, not working that hard. Typicall of most oddities and understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
+      <look>A bit heavier of an individual, he glanced around casually, not working that hard. Typical of most oddities and understandable, since no one cares for murders in the slums, and most oddities in the poor class don't give any cares for the slum dwellers as well.</look>
       <gender>he</gender>
       <article>him</article>
       <alias>police officer</alias>
@@ -644,7 +674,7 @@
         <value>guy</value>
       </alt>
       <speak type="script">
-        msg ("\"I can't describe what he looks like if that's what your hoping for\", he said with a rather calm voice. \"Whoever it was had a hood covering their face, I could only see the white of their eyes and the glisten of their teeth as he tore at that pawn.\" He shifted his weight. \"Glad that pawn jumped in to help me, it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways, after he jumped in, I was able to turn and run, Guess whoever it was knew they couldn't keep up.\"")
+        msg ("\"I can't describe what he looks like if that's what your hoping for,\" he said with a rather calm voice. \"Whoever it was had a hood covering their face; I could only see the white of his eyes and the glisten of his teeth as his tore at that pawn.\" He shifted his weight. \"Glad that pawn jumped in to help me... it isn't everyday one of these inferiors actually will go out of their way to protect us when we aren't forcing them to. Anyways, after he jumped in, I was able to turn and run. Guess whoever it was knew they couldn't keep up.\"")
       </speak>
     </object>
     <object name="Teeth marks">
@@ -656,8 +686,11 @@
         <value>Look at</value>
       </inventoryverbs>
       <visible type="boolean">false</visible>
+      <alias>teeth marks</alias>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <suffix>on the body</suffix>
       <look type="script"><![CDATA[
-        msg ("I lean closer and rolled his head to the left to better see the markings. As his head flops sideways it shows that these bite marks are only one of a few, and there is even a chunk of his neck missing. Looking around I can't see it anywhere nearby, which is odd. Most of the time the perpetrator doesn't eat his victim, especially when it comes to a pawn in the slums. ")
+        msg ("I leaned closer and rolled his head to the left to better see the markings. As his head flops sideways it shows that these bite marks are only one of a few, and there is even a chunk of his neck missing. Looking around I can't see it anywhere nearby, which is odd. Most of the time the perpetrator doesn't eat his victim, especially when it comes to a pawn in the slums.")
         msg ("\"Gruesome,\" Forsyth muttered. \"Once you've finished interviewing anyone you see as relevant, I suggest we head back to the office to <b>review the clues</b>.")
         MakeObjectVisible (The Clues)
       ]]></look>
@@ -784,6 +817,7 @@
       <prefix>the</prefix>
       <look type="string"></look>
       <shoot>As stressed as I was, I had not cracked. I would never shoot the king!</shoot>
+      <arrest>No, no! I was wasting time thinking these foolish things.</arrest>
     </object>
     <object name="Queen">
       <inherit name="editor_object" />
@@ -795,6 +829,7 @@
       <prefix>the</prefix>
       <look type="string"></look>
       <shoot>Never!</shoot>
+      <arrest>No, that couldn't be the right thing to do!</arrest>
     </object>
     <object name="BishopMorphling">
       <inherit name="editor_object" />
@@ -803,6 +838,31 @@
       <article>him</article>
       <look>A man in a set of white bishop's robes calmly conversing with the others. He seemed quite glad to be there.</look>
       <visible type="boolean">false</visible>
+      <shoot type="scriptdictionary">
+        <item key="Handgun">
+          msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
+          wait {
+            msg ("\"What is the meaning of this?!\" The king grew furious. The queen screamed and the others stared in shock.")
+            msg ("I began, \"Well, your highness...\"")
+            wait {
+              msg ("[winning text]")
+              finish
+            }
+          }
+        </item>
+      </shoot>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          msg ("I ran up and cuffed the man.")
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            wait {
+              msg ("[winning text]")
+              finish
+            }
+          }
+        ]]></item>
+      </arrest>
     </object>
     <object name="Knight">
       <inherit name="editor_object" />
@@ -820,6 +880,14 @@
           }
         </item>
       </shoot>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            set (player, turns, 320)
+          }
+        ]]></item>
+      </arrest>
     </object>
     <object name="Pawn">
       <inherit name="editor_object" />
@@ -841,6 +909,15 @@
           }
         </item>
       </shoot>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          msg ("I ran up and cuffed the man.")
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            set (player, turns, 320)
+          }
+        ]]></item>
+      </arrest>
     </object>
     <object name="Rook">
       <inherit name="editor_object" />
@@ -853,7 +930,6 @@
       </alt>
       <visible type="boolean">false</visible>
       <look>A suited man who appeared to be from the middle class but still trying to move higher.</look>
-      <arrest type="string"></arrest>
       <shoot type="scriptdictionary">
         <item key="Handgun">
           msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
@@ -1022,7 +1098,7 @@
       if (player.turns = 101) {
         msg ("<br/>The sun had set; time to head home and call it a night. Couldn't wait to get rid of this muck from the slums that never seems to fail you if you head in there.<br/><br/>I was too tired to take a proper shower. I fell into bed, hoping my alarm was set correctly.<br/><br/>Zzz...")
         wait {
-          msg ("A harsh ringing roused me from my slumber. My fist responded.<br/><br/>\"I really need to throw this in the trash one day\", I thought. It was time to get off to work. Didn't want to waste my day.")
+          msg ("A harsh ringing roused me from my slumber. My fist responded.<br/><br/>\"I really need to throw this in the trash one day,\" I thought. It was time to get off to work. Didn't want to waste my day.")
           MoveObject (player, Alekhines Home)
           MoveObject (Forsyth, Office)
           MakeObjectInvisible (Case File)
@@ -1030,9 +1106,13 @@
           MakeObjectVisible (Case File 2)
           MakeObjectVisible (Rookter)
           MakeObjectVisible (Police Officer 1)
+          <<<<<<< HEAD
           LockExit (Office Downtown)
           LockExit (Office Marketplace)
           LockExit (Office School)
+          = ======
+          MakeObjectVisible (Rookters Window)
+          >>>>>>> c118b73a5a6627e9f645d3202a1a66560b409321
         }
       }
       else if (player.turns = 201) {
@@ -1067,10 +1147,13 @@
           MakeObjectInvisible (Archbishop Laurence)
           MakeObjectInvisible (Organ Pipe)
           MakeObjectInvisible (Shattered Railing)
+          <<<<<<< HEAD
           UnlockExit (AlekhinesHome Resort)
           UnlockExit (Office GolfClub)
           UnlockExit (School Palace)
           UnlockExit (Marketplace GovermentOffices)
+          = ======
+          >>>>>>> c118b73a5a6627e9f645d3202a1a66560b409321
         }
       }
       if (player.turns = 205) {
