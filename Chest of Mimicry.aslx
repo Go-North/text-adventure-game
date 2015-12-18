@@ -768,6 +768,7 @@
       <prefix>the</prefix>
       <look type="string"></look>
       <shoot>As stressed as I was, I had not cracked. I would never shoot the king!</shoot>
+      <arrest>No, no! I was wasting time thinking these foolish things.</arrest>
     </object>
     <object name="Queen">
       <inherit name="editor_object" />
@@ -779,6 +780,7 @@
       <prefix>the</prefix>
       <look type="string"></look>
       <shoot>Never!</shoot>
+      <arrest>No, that couldn't be the right thing to do!</arrest>
     </object>
     <object name="BishopMorphling">
       <inherit name="editor_object" />
@@ -787,6 +789,31 @@
       <article>him</article>
       <look>A man in a set of white bishop's robes calmly conversing with the others. He seemed quite glad to be there.</look>
       <visible type="boolean">false</visible>
+      <shoot type="scriptdictionary">
+        <item key="Handgun">
+          msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
+          wait {
+            msg ("\"What is the meaning of this?!\" The king grew furious. The queen screamed and the others stared in shock.")
+            msg ("I began, \"Well, your highness...\"")
+            wait {
+              msg ("[winning text]")
+              finish
+            }
+          }
+        </item>
+      </shoot>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          msg ("I ran up and cuffed the man.")
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            wait {
+              msg ("[winning text]")
+              finish
+            }
+          }
+        ]]></item>
+      </arrest>
     </object>
     <object name="Knight">
       <inherit name="editor_object" />
@@ -804,6 +831,14 @@
           }
         </item>
       </shoot>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            set (player, turns, 320)
+          }
+        ]]></item>
+      </arrest>
     </object>
     <object name="Pawn">
       <inherit name="editor_object" />
@@ -825,6 +860,15 @@
           }
         </item>
       </shoot>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          msg ("I ran up and cuffed the man.")
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            set (player, turns, 320)
+          }
+        ]]></item>
+      </arrest>
     </object>
     <object name="Rook">
       <inherit name="editor_object" />
@@ -837,6 +881,15 @@
       </alt>
       <visible type="boolean">false</visible>
       <look>A suited man who appeared to be from the middle class but still trying to move higher.</look>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          msg ("I ran up and cuffed the man.")
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            set (player, turns, 320)
+          }
+        ]]></item>
+      </arrest>
       <shoot type="scriptdictionary">
         <item key="Handgun">
           msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
@@ -846,7 +899,6 @@
           }
         </item>
       </shoot>
-      <arrest type="string"></arrest>
     </object>
     <turnscript name="Group movements">
       <enabled />
@@ -1037,15 +1089,15 @@
       else if (player.turns = 301) {
         msg ("Holy shit things were heating up, I need to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set...<br/><br/>Zzz...<br/>")
         wait {
-        msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
-        MoveObject (player, Alekhines Home)
-        MoveObject (Forsyth, Office)
-        MakeObjectInvisible (Case File 3)
-        MakeObjectInvisible (Police Officer 2)
-        MakeObjectInvisible (Archbishop Laurence)
-        MakeObjectInvisible (Organ Pipe)
-        MakeObjectInvisible (Shattered Railing)
-		}
+          msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
+          MoveObject (player, Alekhines Home)
+          MoveObject (Forsyth, Office)
+          MakeObjectInvisible (Case File 3)
+          MakeObjectInvisible (Police Officer 2)
+          MakeObjectInvisible (Archbishop Laurence)
+          MakeObjectInvisible (Organ Pipe)
+          MakeObjectInvisible (Shattered Railing)
+        }
       }
       if (player.turns = 205) {
         msg ("Thunder cracked ominously in the distance.")
