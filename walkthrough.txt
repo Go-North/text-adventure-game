@@ -35,6 +35,6 @@ review the clues
 go north
 go west
 go west
-arrest bishop
+arrest bishop (or shoot bishop)
 
-To experience all of the bypassed things (taking several playthroughs), explore all the areas, look at everything and talk to everyone, visit the church before the bishop dies, shoot and arrest the innocents at the golf club, wait until the queen dies, and wait a while outside the golf club on the fourth day.
+To experience all of the bypassed things (taking several playthroughs), explore all the areas, look at everything and talk to everyone, visit the church before the bishop dies, shoot and arrest the innocents at the golf club, wait until the queen dies, shoot Forsyth, and wait a while outside the golf club on the fourth day.

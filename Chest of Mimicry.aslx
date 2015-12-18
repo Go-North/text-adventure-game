@@ -885,6 +885,7 @@
       </shoot>
       <arrest type="scriptdictionary">
         <item key="Handcuffs"><![CDATA[
+          msg ("I ran up and cuffed the man.")
           wait {
             msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
             set (player, turns, 320)
@@ -902,7 +903,7 @@
         <value>pawn</value>
       </alt>
       <visible type="boolean">false</visible>
-      <look>A clearly out-of-place man from the slums. He seemed as though he didn't know how to act.</look>
+      <look>A clearly out-of-place man from the slums. He seemed as though he didn't know how to act in this company. Likely here as a servant.</look>
       <shoot type="scriptdictionary">
         <item key="Handgun">
           msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
@@ -942,6 +943,15 @@
           }
         </item>
       </shoot>
+      <arrest type="scriptdictionary">
+        <item key="Handcuffs"><![CDATA[
+          msg ("I ran up and cuffed the man.")
+          wait {
+            msg ("\"What is the meaning of this?\" inquired the king.<br/><br/>I began, \"Well, your majesty...\"")
+            set (player, turns, 320)
+          }
+        ]]></item>
+      </arrest>
     </object>
     <turnscript name="Group movements">
       <enabled />
@@ -950,7 +960,7 @@
           msg ("The group all laughed.<br/><br/>I watched for movement. My heart rate was rising.")
         }
         else if (player.turns = 313) {
-          msg ("The slummer made a move towards the king.<br/><br/>My heart was pounding.")
+          msg ("The slummer made a move towards the king, golf club in hand.<br/><br/>My heart was pounding.")
         }
         else if (player.turns = 314) {
           msg ("The slummer handed the king a golf club.")
@@ -988,6 +998,14 @@
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
+    <firstenter type="script"><![CDATA[
+      if (not Got(Handcuffs)) {
+        msg ("\"Did you grab your cuffs and piece?\" Forsyth asked.<br/>I hadn't. I thought it best to head back and do so.")
+      }
+      else if (not Got(Handgun)) {
+        msg ("\"Did you grab your cuffs and piece?\" Forsyth asked.<br/>I hadn't. I thought it best to head back and do so.")
+      }
+    ]]></firstenter>
     <exit name="Downtown Office" alias="north" to="Office">
       <inherit name="northdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
