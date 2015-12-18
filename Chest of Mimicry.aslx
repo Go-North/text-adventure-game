@@ -49,17 +49,17 @@
       <inherit name="northdirection" />
       <scenery type="boolean">false</scenery>
       <locked />
-      <lockmessage>I didn't need to go this way.</lockmessage>
+      <lockmessage>I'm not allowed into upper class areas without a reason.</lockmessage>
     </exit>
     <exit name="Office School" alias="west" to="School">
       <inherit name="westdirection" />
       <locked />
-      <lockmessage>I didn't need to go this way.</lockmessage>
+      <lockmessage>I needed to check my case before heading out.</lockmessage>
     </exit>
     <exit name="Office Marketplace" alias="east" to="Marketplace">
       <inherit name="eastdirection" />
       <locked />
-      <lockmessage>I didn't need to go this way.</lockmessage>
+      <lockmessage>I needed to check my case before heading out.</lockmessage>
     </exit>
     <exit name="Office Downtown" alias="south" to="Downtown">
       <inherit name="southdirection" />
@@ -134,9 +134,11 @@
       <visible />
       <drop type="boolean">false</drop>
       <ontake type="script"><![CDATA[
-        msg ("\"The newest murder in town, down at the slums; happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/>Always enthusiastic, that guy.")
+        msg ("\"The newest murder in town, down at the slums; happened in the alley,\" Forsyth told me. \"Guy by the name of Ponder. Figured you could handle it. Not like you had much goin' on anyway. Check out your map if you need and then let's get to it!\"<br/><br/>Always enthusiastic, that guy.")
         UnlockExit (Office Downtown)
         SetObjectFlagOn (Case File, "Taken")
+        UnlockExit (Office School)
+        UnlockExit (Office Marketplace)
       ]]></ontake>
     </object>
     <object name="Drawer">
@@ -186,20 +188,34 @@
       <inherit name="editor_object" />
       <alias>Case File</alias>
       <visible type="boolean">false</visible>
-      <look>The folder containing all the information for the second case.</look>
+      <look>The folder containing all the information for the second case. Looks like a middle class rook was killed off.</look>
       <take />
       <alt type="stringlist">
         <value>file</value>
       </alt>
-      <ontake type="script">
-      </ontake>
+      <ontake type="script"><![CDATA[
+        msg ("\"A new murder today, victim is a guy named Rookter; happened at his house,\" Forsyth says as i read through the file. \"Apperently the crime scene has similarities to our case from yesturday, so this case was given to you. Also as suspected, since this is a rook that was killed off, this takes priority over our previous case. But since these murders may be related, we may just be dealing with one killer here.\"<br/><br/>Should of known this case would take priority over our previous case. No one care for the pawns these days, and why should we?")
+        UnlockExit (Office Downtown)
+        UnlockExit (Office Marketplace)
+        UnlockExit (Office School)
+        SetObjectFlagOn (Case File 2, "Taken")
+      ]]></ontake>
+      <takemsg>Got it.</takemsg>
     </object>
     <object name="Case File 3">
       <inherit name="editor_object" />
       <alias>Case File</alias>
       <visible type="boolean">false</visible>
-      <look>The folder containing all the information for the third case.</look>
+      <look>The folder containing all the information for the third case. Looks like a bishop was killed off in the church.</look>
       <take />
+      <ontake type="script"><![CDATA[
+        msg ("\"Got another case today, man were getting flooded\" Forsyth says as i read through the file. \"Apperently they think the murder is realated to the past two murders we have just been investigating. so of course they threw this case at us. But if this person is killing this fast, we had better get going, or else there will be all hell from the upper class if we fail them by not catching this murderer.\"<br/><br/>Great, now we have our superiors breathing our backs, but can't complain to much, everything I have is because of them, so I should be thankfull.<br/>")
+        UnlockExit (Office Downtown)
+        UnlockExit (Office Marketplace)
+        UnlockExit (Office School)
+        SetObjectFlagOn (Case File 3, "Taken")
+      ]]></ontake>
+      <takemsg>Got it.</takemsg>
     </object>
     <object name="Desk">
       <inherit name="editor_object" />
@@ -275,7 +291,7 @@
     <exit name="Marketplace GovermentOffices" alias="north" to="Government Offices">
       <inherit name="northdirection" />
       <locked />
-      <lockmessage>I didn't need to go this way.</lockmessage>
+      <lockmessage>I'm not allowed into upper class areas without a reason.</lockmessage>
     </exit>
   </object>
   <object name="Alekhines Home">
@@ -293,7 +309,7 @@
     </exit>
     <exit name="AlekhinesHome Resort" alias="north" to="Resort">
       <inherit name="northdirection" />
-      <lockmessage>I didn't need to go this way.</lockmessage>
+      <lockmessage>I'm not allowed into upper class areas without a reason.</lockmessage>
       <locked />
     </exit>
     <exit name="AlekhinesHome Church" alias="south" to="Church">
@@ -450,7 +466,7 @@
     </enter>
     <exit name="School Palace" alias="north" to="Palace">
       <inherit name="northdirection" />
-      <lockmessage>I didn't need to go this way.</lockmessage>
+      <lockmessage>I'm not allowed into upper class areas without a reason.</lockmessage>
       <locked />
     </exit>
     <exit name="School Office" alias="east" to="Office">
@@ -837,6 +853,7 @@
       </alt>
       <visible type="boolean">false</visible>
       <look>A suited man who appeared to be from the middle class but still trying to move higher.</look>
+      <arrest type="string"></arrest>
       <shoot type="scriptdictionary">
         <item key="Handgun">
           msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
@@ -846,7 +863,6 @@
           }
         </item>
       </shoot>
-      <arrest type="string"></arrest>
     </object>
     <turnscript name="Group movements">
       <enabled />
@@ -900,7 +916,7 @@
     </exit>
     <exit name="Downtown Apartments" alias="east" to="Apartment Complex">
       <inherit name="eastdirection" />
-      <locked />
+      <locked type="boolean">false</locked>
       <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
     <exit name="Downtown Alley" alias="south" to="Alley">
@@ -910,7 +926,7 @@
     </exit>
     <exit name="Downtown Rookters" alias="west" to="Rookters">
       <inherit name="westdirection" />
-      <locked />
+      <locked type="boolean">false</locked>
       <lockmessage>I didn't need to go this way.</lockmessage>
     </exit>
   </object>
@@ -1014,6 +1030,9 @@
           MakeObjectVisible (Case File 2)
           MakeObjectVisible (Rookter)
           MakeObjectVisible (Police Officer 1)
+          LockExit (Office Downtown)
+          LockExit (Office Marketplace)
+          LockExit (Office School)
         }
       }
       else if (player.turns = 201) {
@@ -1033,19 +1052,26 @@
         MakeObjectInvisible (Rookter)
         MakeObjectInvisible (Police Officer 1)
         MakeObjectInvisible (Nose)
+        LockExit (Office Downtown)
+        LockExit (Office Marketplace)
+        LockExit (Office School)
       }
       else if (player.turns = 301) {
         msg ("Holy shit things were heating up, I need to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set...<br/><br/>Zzz...<br/>")
         wait {
-        msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
-        MoveObject (player, Alekhines Home)
-        MoveObject (Forsyth, Office)
-        MakeObjectInvisible (Case File 3)
-        MakeObjectInvisible (Police Officer 2)
-        MakeObjectInvisible (Archbishop Laurence)
-        MakeObjectInvisible (Organ Pipe)
-        MakeObjectInvisible (Shattered Railing)
-		}
+          msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
+          MoveObject (player, Alekhines Home)
+          MoveObject (Forsyth, Office)
+          MakeObjectInvisible (Case File 3)
+          MakeObjectInvisible (Police Officer 2)
+          MakeObjectInvisible (Archbishop Laurence)
+          MakeObjectInvisible (Organ Pipe)
+          MakeObjectInvisible (Shattered Railing)
+          UnlockExit (AlekhinesHome Resort)
+          UnlockExit (Office GolfClub)
+          UnlockExit (School Palace)
+          UnlockExit (Marketplace GovermentOffices)
+        }
       }
       if (player.turns = 205) {
         msg ("Thunder cracked ominously in the distance.")
