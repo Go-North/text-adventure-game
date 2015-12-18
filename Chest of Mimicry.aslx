@@ -232,17 +232,20 @@
         if (player.turns < 101) {
           msg ("<br/>\"Well, we've got a good start, but there's too many facts missing at this point,\" my assistant admitted. \"Hopefully tomorrow will produce more leads.\"<br/><br/>I agreed.<br/><br/>\"I've got to get home now; you'd do well to do the same. Goodnight, Alekhine.\"<br/><br/>Forsyth put on his coat and left the office.<br/><br/>He had a point. One cannot investigate on no sleep. Perhaps tomorrow will lead us closer to solving this murder...")
           player.turns = 100
+          MakeObjectInvisible (The Clues)
         }
         if (player.turns > 101) {
           if (player.turns < 201) {
             msg ("\"So\", Forsyth sighed, \"the similarities between these two cases make them appear to be related. The bodies are equally mutilated, the crime scenes are near, and there seems to be minor cannibalism in both. Likely the same culprit. But still, who, and why? ... I have a hunch, but I need to sleep on it.\"<br/><br/>We said our goodbyes, and he left for the night.<br/><br/>I looked out the window.<br/><br/>")
             player.turns = 200
+            MakeObjectInvisible (The Clues)
           }
         }
         if (player.turns > 201) {
           if (player.turns < 301) {
             msg ("insert stuff here again")
             player.turns = 300
+            MakeObjectInvisible (The Clues)
           }
         }
       ]]></review>
@@ -342,6 +345,7 @@
     </exit>
     <object name="Archbishop Laurence">
       <inherit name="editor_object" />
+      <visible />
       <look type="script"><![CDATA[
         if (player.turns < 201) {
           msg ("A sturdy priest in his cloak, standing behind a desk, scribbling something down on some paper in front of him.")
@@ -353,7 +357,6 @@
           }
         }
       ]]></look>
-      <visible />
       <speak type="script"><![CDATA[
         msg ("")
         if (player.turns < 201) {
@@ -367,10 +370,10 @@
     <object name="Police Officer 2">
       <inherit name="editor_object" />
       <alias>Police Officer</alias>
+      <visible type="boolean">false</visible>
       <look type="script">
         msg ("The same officer as the one I met at Rookter's, he glances back at me perplexed. He definitly knows there is something eerily wrong with this situation, espicially with the similarities to the last few murders I've been looking into.")
       </look>
-      <visible type="boolean">false</visible>
       <speak type="script">
         msg ("\"I'd say it's nice to see you again, but honestly I'd rather whish none of us were here in this situation right now, and that includes this bishop. Shame he had to end up on top of the organ pipes like this.\" he said with an uncomfortable voice. \"And theres a piece of him missing, just like Rookter had a body part missing. There is something stange going on here. I haven't seen something like this since that last morphling was caught a few years ago. Those crime scenes were brutal to look at, just like these.\" ")
       </speak>
@@ -380,6 +383,7 @@
       <visible type="boolean">false</visible>
       <look type="script"><![CDATA[
         msg ("A pawn quickly runs and brings back a ladder for me at my request, I climb up the ladder so i can get a great look at the where there is a missing chunk of flesh missing from the organ pipe. <br/><br/>When I got high enough to see over his body, I leaned in closer to see this inside of the pipe. What I noticed was that the piece of his body that was supposed to be there had been removed, as the blood streaks wentsup instead of down within this pipe.<br/><br/>I relayed waht i saw to Forsyth, \"Well something -edit. Better go back to the office and <b> review the clues </b> so we can figure out what is all happening.\"")
+        MakeObjectVisible (The Clues)
       ]]></look>
     </object>
     <object name="Shattered Railing">
@@ -480,10 +484,6 @@
       <visible type="boolean">false</visible>
       <drop type="boolean">false</drop>
       <attr name="feature_edible" type="boolean">false</attr>
-      <look type="script"><![CDATA[
-        msg ("The expression of surprise stamped into his eyes by death's cold embrace was hard not to stare at. But after pulling my eyes away and inspecting the rest of his body, I noticed some familiarities betwwen Rookter and Ponder. Most noticeable was the broken joints splayed across the floor. The most prominent feature of the body, though, was the fact that his nose was missing. I should probably look at where his <b> nose </b> was torn off.")
-        MakeObjectVisible (Nose)
-      ]]></look>
       <alias>rookter</alias>
       <alt type="stringlist">
         <value>body</value>
@@ -492,19 +492,23 @@
       <gender>he</gender>
       <article>him</article>
       <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <look type="script"><![CDATA[
+        msg ("The expression of surprise stamped into his eyes by death's cold embrace was hard not to stare at. But after pulling my eyes away and inspecting the rest of his body, I noticed some familiarities betwwen Rookter and Ponder. Most noticeable was the broken joints splayed across the floor. The most prominent feature of the body, though, was the fact that his nose was missing. I should probably look at where his <b> nose </b> was torn off.")
+        MakeObjectVisible (Nose)
+      ]]></look>
     </object>
     <object name="Police Officer 1">
       <inherit name="editor_object" />
       <alias>Police Officer</alias>
       <visible type="boolean">false</visible>
+      <gender>he</gender>
+      <article>him</article>
       <look type="script">
         msg ("I could tell that this police officer cared about his job more than most, which is probably why he was working in the middle class area. His uniform was clean and he didn't have a lingering stench, which was a nice change.")
       </look>
       <speak type="script">
         msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must of surprised Rookter as well,  that look of surprise in his eyes is a dead giveaway.\" He said rather plainly. \"None of the neighbours heard anything unfortunatly.\" ")
       </speak>
-      <gender>he</gender>
-      <article>him</article>
     </object>
     <object name="Rookters Window">
       <inherit name="editor_object" />
@@ -884,8 +888,8 @@
       else if (player.turns = 201) {
         msg ("<br/>The sun had set; time to head home and call it a night. Thankfully this case was out of the slums; majority of them are in that stinky pit. I didn't have to go to sleep feeling like grease this time.<br/><br/>I took a shower, the facts of the cases swirling through my mind. Why would someone commit these brutal crimes? What's the goal?<br/><br/>The thoughts continued a while as I lay in bed. Eventually, though...<br/><br/>Zzz...<br/>")
         wait {
+          msg ("The ringing again. The responding smack.<br/><br/>\"I really need to get a less lumpy matress sometime.\" It was time to get off to work now though. I wanted to learn of Forsyth's hunch.")
         }
-        msg ("The ringing again. The responding smack.<br/><br/>\"I really need to get a less lumpy matress sometime.\" It was time to get off to work now though. I wanted to learn of Forsyth's hunch.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
         MakeObjectVisible (Police Officer 2)
@@ -902,8 +906,8 @@
       else if (player.turns = 301) {
         msg ("<br/>Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>")
         wait {
+          msg ("I shut off my alarm.<br/><br/>Not the greatest sleep. It was time to get off to work though.<br/><br/>Looking outside showed the rain had finally ceased.")
         }
-        msg ("I shut off my alarm.<br/><br/>Not the greatest sleep. It was time to get off to work though.<br/><br/>Looking outside showed the rain had finally ceased.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
         MakeObjectInvisible (Case File 3)
