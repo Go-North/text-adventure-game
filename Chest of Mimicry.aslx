@@ -231,18 +231,18 @@
         MakeObjectInvisible (The Clues)
         if (player.turns < 101) {
           msg ("<br/>\"Well, we've got a good start, but there's too many facts missing at this point,\" my assistant admitted. \"Hopefully tomorrow will produce more leads.\"<br/><br/>I agreed.<br/><br/>\"I've got to get home now; you'd do well to do the same. Goodnight, Alekhine.\"<br/><br/>Forsyth put on his coat and left the office.<br/><br/>He had a point. One cannot investigate on no sleep. Perhaps tomorrow will lead us closer to solving this murder...")
-          player.turns = 101
+          player.turns = 100
         }
         if (player.turns > 101) {
           if (player.turns < 201) {
             msg ("insert stuff here ")
-            player.turns = 201
+            player.turns = 200
           }
         }
         if (player.turns > 201) {
           if (player.turns < 301) {
             msg ("insert stuff here again")
-            player.turns = 301
+            player.turns = 300
           }
         }
       ]]></review>
@@ -431,27 +431,36 @@
       <visible type="boolean">false</visible>
       <drop type="boolean">false</drop>
       <attr name="feature_edible" type="boolean">false</attr>
-      <look type="script">
-        msg ("")
-      </look>
+      <look type="script"><![CDATA[
+        msg ("The expression of surprise stamped into his eyes by deaths cold embrace was hard not to stare at. But after pulling my eyes away and inspecting the rest of his body, I noticed some familiarities betwwen Rookter and Ponder. Most noticeably is the broken joints splayed across the floor. The most prominent feature of Rookter though is the fact that his nose is missing though. I should probably look at where his <b> nose </b> was torn off.")
+        MakeObjectVisible (Nose)
+      ]]></look>
     </object>
     <object name="Police Officer 1">
       <inherit name="editor_object" />
       <alias>Police Officer</alias>
+      <visible type="boolean">false</visible>
       <look type="script">
         msg ("I could tell that this police officer cared about his job more than most, which is probably my he was working in the middle class area. His uniform was clean and he didn't have a lingering stench, which was a nice change.")
       </look>
-      <visible type="boolean">false</visible>
       <speak type="script">
-        msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must of surprised Rookter as well, none of the neighbours heard anything.\" He said rather plainly.")
+        msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must of surprised Rookter as well,  that look of surprise in his eyes is a dead giveaway.\" He said rather plainly. \"None of the neighbours heard anything unfortunatly.\" ")
       </speak>
     </object>
     <object name="Rookters Window">
       <inherit name="editor_object" />
       <alias>Window</alias>
       <look type="script">
-        msg ("As I near the window I can see it faces south towards the slum neighbourhood, which wouldn't be significant if it wasn't for the fact that this was the only window that had paint torn at the bottom of it.")
+        msg ("As I near the window I can see it faces southeast towards the slum neighbourhood, which wouldn't be significant if it wasn't for the fact that this was the only window that had paint torn at the bottom of it. Must of been how the killer got in.")
       </look>
+    </object>
+    <object name="Nose">
+      <inherit name="editor_object" />
+      <visible type="boolean">false</visible>
+      <look type="script"><![CDATA[
+        msg ("I looked closer and I could see teeth marks and torn flesh where his nose used to be, with pieces of remaining cartilage sticking out of the hole in his face. There is no blood trail for the nose being moved or thrown anywhere.<br/><br/>\"Officer, have you seen a nose anywhere in this home? I asked the police officer while inspecting the nearby floor.<br/><br/>\"No, which I found odd, not many people have the strength to bite a nose straight off, and I don't understand why they would, since it appears to have happend after Rookter was already dead.\" Replied the officer, clearly perplexed at the situation.<br/><br/>Forsyth turned to me, \"With all those blood droplets splattered randomly over his body, makes you think the killer ate Rookter's nose over his dead body. But even when pawns turn to cannibalism they usually eat more of the person.\" he stated as he scanned over Rookter's lifeless body. \"Anyways when your done looking around here we can go back and <b> review the clues </b> from today at the office.\"<br/>")
+        MakeObjectVisible (The Clues)
+      ]]></look>
     </object>
   </object>
   <object name="Alley">
@@ -814,7 +823,10 @@
         }
       }
       else if (player.turns = 201) {
-        msg ("<br/>Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
+        msg ("<br/>Damn the sun is getting low, well time to head home and call it a night. Thankfully this case was out of the slums, majority of them are in that stinky pit. Now i don't have to go to sleep feeling like grease<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/>")
+        wait {
+        }
+        msg ("*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
         MakeObjectInvisible (Case File 2)
@@ -823,9 +835,13 @@
         MakeObjectInvisible (Teeth marks)
         MakeObjectInvisible (Rookter)
         MakeObjectInvisible (Police Officer 1)
+        MakeObjectInvisible (Nose)
       }
       else if (player.turns = 301) {
-        msg ("<br/>Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
+        msg ("<br/>Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>")
+        wait {
+        }
+        msg ("*Alarm*<br/>I really need to get a less lumpy matress sometime. Time to get off to work now though. Don't want to waste my day.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
         MakeObjectInvisible (Case File 3)
