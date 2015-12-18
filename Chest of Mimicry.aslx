@@ -188,7 +188,7 @@
       <inherit name="editor_object" />
       <alias>Case File</alias>
       <visible type="boolean">false</visible>
-      <look>The folder containing all the information for the second case. Looks like a middle class rook was killed off.</look>
+      <look>The folder containing all the information for the second case. Looks like a middle class rook was killed off in his own home.</look>
       <take />
       <alt type="stringlist">
         <value>file</value>
@@ -548,16 +548,16 @@
       <visible type="boolean">false</visible>
       <gender>he</gender>
       <article>him</article>
+      <alt type="stringlist">
+        <value>officer</value>
+        <value>cop</value>
+      </alt>
       <look type="script">
         msg ("I could tell that this police officer cared about his job more than most, which is probably why he was working in the middle class area. His uniform was clean and he didn't have a lingering stench, which was a nice change.")
       </look>
       <speak type="script">
         msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must have surprised Rookter as well,  that look of surprise in his eyes is a dead giveaway.\" He said rather plainly. \"None of the neighbours heard anything, which unfortunately doesn't help us narrow down what type of person would do this.\" ")
       </speak>
-      <alt type="stringlist">
-        <value>officer</value>
-        <value>cop</value>
-      </alt>
     </object>
     <object name="Rookters Window">
       <inherit name="editor_object" />
@@ -1099,7 +1099,7 @@
     <script><![CDATA[
       player.turns = player.turns + 1
       if (player.turns = 101) {
-        msg ("<br/>The sun had set; time to head home and call it a night. Couldn't wait to get rid of this muck from the slums that never seems to fail you if you head in there.<br/><br/>I was too tired to take a proper shower. I fell into bed, hoping my alarm was set correctly.<br/><br/>Zzz...")
+        msg ("<br/>The sun had set; time to head home and call it a night. Couldn't wait to get rid of this muck from the slums that never seems to fail you if you head in there.<br/><br/>I was too tired to take a proper shower. I fell into bed, hoping my alarm was set correctly.<br/><br/>Zzz...<br/>")
         wait {
           msg ("A harsh ringing roused me from my slumber. My fist responded.<br/><br/>\"I really need to throw this in the trash one day,\" I thought. It was time to get off to work. Didn't want to waste my day.")
           MoveObject (player, Alekhines Home)
@@ -1148,6 +1148,7 @@
           MakeObjectVisible (Knight)
           MakeObjectVisible (Pawn)
           MakeObjectVisible (Rook)
+          MakeObjectInvisible (Forsyth)
           MakeObjectInvisible (Case File 3)
           MakeObjectInvisible (Police Officer 2)
           MakeObjectInvisible (Archbishop Laurence)
