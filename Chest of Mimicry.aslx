@@ -258,7 +258,7 @@
         }
         if (player.turns > 201) {
           if (player.turns < 301) {
-            msg ("Forsyth looked at me, \"Looks like we are dealing with a morphling here, and if that's the case then he is definitly targeting somebody tomorrow. I'd guess it would have to be somebody of a higher rank, so probably a king or queen for the upper class.\"<br/><br/>\"We don't have much time tomorrow to stop him tomorrow then, chasing him tonight is useless because he is proably just waiting for the morning when the upper class leaves the protection of thier homes.\" I replied anxiously.<br/><br/>Forsyth starred at me, \"Well in that case you better figure out where he is going to strike tomorrow, because I doubt we have that much time before he kills his target. Since morphlings take the role of their previous victim, and move like they would, you'd better figure out where this now deceased bishop could of gone in the upper class, or else you have no chance of stopping this morphling.\"<br/><br/>I nodded, hoping I'd investigated the crime scenes enough to know our perpetrator's next move.<br/><br/>And with that we both headed home, knowing tomorrow was the day we needed to prove ourselves to our superiors, or they would punish us harshly for not protecting them.")
+            msg ("Forsyth looked at me, \"Looks like we are dealing with a morphling here, and if that's the case then he is definitly targeting somebody tomorrow. I'd guess it would have to be somebody of a higher rank, so probably someone from the upper class.\"<br/><br/>\"We don't have much time tomorrow to stop him tomorrow then... Chasing him tonight is likely useless as he's proably waiting for morning when the upper class leaves the protection of their homes,\" I replied anxiously.<br/><br/>Forsyth stared at me, \"Well in that case you'd better figure out where he is going to strike tomorrow, because I doubt we have that much time before he kills his target. Since morphlings take the role of their previous victim, and act like they would, you'd better figure out where this 'bishop' could be going, or else you have no chance of stopping this morphling.\"<br/><br/>I nodded, hoping I'd investigated the crime scenes enough to know our perpetrator's next move.<br/><br/>And with that, we both headed home, knowing tomorrow was the day we needed to prove ourselves to our superiors, or they would punish us harshly for not protecting them.")
             player.turns = 300
             MakeObjectInvisible (The Clues)
           }
@@ -1137,7 +1137,7 @@
         LockExit (Office School)
       }
       else if (player.turns = 301) {
-        msg ("Holy shit things were heating up, I need to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I was too tired to take a shower, so just lied down on my bed, hoping my alarm was set...<br/><br/>Zzz...<br/>")
+        msg ("Holy shit things were heating up, I needed to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I was too tired to take a shower, so just lied down on my bed, hoping my alarm was set...<br/><br/>Zzz...<br/>")
         wait {
           msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
           MoveObject (player, Alekhines Home)
