@@ -178,8 +178,7 @@
         <alias>handgun</alias>
         <alt type="stringlist">
           <value>gun</value>
-          <value>Colt 1911</value>
-          <value>colt 1911</value>
+          <value>pistol</value>
         </alt>
       </object>
     </object>
@@ -320,6 +319,15 @@
       <scenery />
       <look>The news was on, of course. The upper class did something good, the lowest did something bad, the weather was gloomy. A standard day. Wouldn't notice if this was a rerun, actually.</look>
     </object>
+    <turnscript name="After death script">
+      <enabled />
+      <script>
+        if (GetBoolean(Queen, "dead")) {
+          msg ("I've waited in silence as long as I could, but I hear the special operations unit shouting outside. The door is being broken in. I can't ")
+          finish
+        }
+      </script>
+    </turnscript>
   </object>
   <object name="Church">
     <inherit name="editor_room" />
@@ -722,7 +730,16 @@
   <object name="Golf Club">
     <inherit name="editor_room" />
     <objectslistprefix>I could see</objectslistprefix>
-    <description><![CDATA[<b>Golf Club</b>: Where the many of the uppermost like to spend their days. Lush, green grass covers the rolling hills, only the occasional flag interrupting it now and then.<br/><br/>I stood at the entrance.]]></description>
+    <description type="script"><![CDATA[
+      if (player.turns < 300) {
+        msg ("<b>Golf Club</b>: Where the many of the uppermost like to spend their days. Lush, green grass covers the rolling hills, only the occasional flag interrupting it now and then.<br/><br/>I stood at the entrance.")
+      }
+      else if (player.turns < 350) {
+        msg ("<b>Golf Club</b>: Where the many of the uppermost like to spend their days. Lush, green grass covers the rolling hills, only the occasional flag interrupting it now and then. A group of people stood in the first area.")
+      }
+      else {
+      }
+    ]]></description>
     <enter type="script">
       MoveObjectHere (Forsyth)
     </enter>
@@ -746,13 +763,128 @@
       <gender>he</gender>
       <article>him</article>
       <visible type="boolean">false</visible>
+      <alias>king</alias>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <prefix>the</prefix>
+      <look type="string"></look>
+      <shoot>As stressed as I was, I had not cracked. I would never shoot the king!</shoot>
     </object>
     <object name="Queen">
       <inherit name="editor_object" />
       <gender>she</gender>
       <article>her</article>
       <visible type="boolean">false</visible>
+      <alias>queen</alias>
+      <usedefaultprefix type="boolean">false</usedefaultprefix>
+      <prefix>the</prefix>
+      <look type="string"></look>
+      <shoot>Never!</shoot>
     </object>
+    <object name="BishopMorphling">
+      <inherit name="editor_object" />
+      <alias>man in bishopric robes</alias>
+      <gender>he</gender>
+      <article>him</article>
+      <look>A man in a set of white bishop's robes calmly conversing with the others. He seemed quite glad to be there.</look>
+      <visible type="boolean">false</visible>
+    </object>
+    <object name="Knight">
+      <inherit name="editor_object" />
+      <alias>man in armour</alias>
+      <gender>he</gender>
+      <article>him</article>
+      <look>A tall man in a suit of armour who was hamming it up in front of the royals, seeming to try his best to be near them.</look>
+      <visible type="boolean">false</visible>
+      <shoot type="scriptdictionary">
+        <item key="Handgun">
+          msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
+          wait {
+            msg ("\"What is the meaning of this?!\" The king grew furious. The queen screamed and the others stared in shock.")
+            set (player, turns, 320)
+          }
+        </item>
+      </shoot>
+    </object>
+    <object name="Pawn">
+      <inherit name="editor_object" />
+      <gender>he</gender>
+      <article>him</article>
+      <alias>slummer</alias>
+      <alt type="stringlist">
+        <value>slummer</value>
+        <value>pawn</value>
+      </alt>
+      <visible type="boolean">false</visible>
+      <look>A clearly out-of-place man from the slums. He seemed as though he didn't know how to act.</look>
+      <shoot type="scriptdictionary">
+        <item key="Handgun">
+          msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
+          wait {
+            msg ("\"What is the meaning of this?!\" The king grew furious. The queen screamed and the others stared in shock.")
+            set (player, turns, 320)
+          }
+        </item>
+      </shoot>
+    </object>
+    <object name="Rook">
+      <inherit name="editor_object" />
+      <alias>man in a suit</alias>
+      <gender>he</gender>
+      <article>him</article>
+      <alt type="stringlist">
+        <value>man</value>
+        <value>suited man</value>
+      </alt>
+      <visible type="boolean">false</visible>
+      <look>A suited man who appeared to be from the middle class but still trying to move higher.</look>
+      <shoot type="scriptdictionary">
+        <item key="Handgun">
+          msg ("I drew my sidearm and fired repeatedly into his centre mass. He coughed up blood and collapsed.")
+          wait {
+            msg ("\"What is the meaning of this?!\" The king grew furious. The queen screamed and the others stared in shock.")
+            set (player, turns, 320)
+          }
+        </item>
+      </shoot>
+      <arrest type="string"></arrest>
+    </object>
+    <turnscript name="Group movements">
+      <enabled />
+      <script><![CDATA[
+        if (player.turns = 310) {
+          msg ("The group all laughed.<br/><br/>I watched for movement. My heart rate was rising.")
+        }
+        else if (player.turns = 313) {
+          msg ("The slummer made a move towards the king.<br/><br/>My heart was pounding.")
+        }
+        else if (player.turns = 314) {
+          msg ("The slummer handed the king a golf club.")
+        }
+        else if (player.turns = 317) {
+          msg ("The man in armour moved to the queen, raising an arm.")
+        }
+        else if (player.turns = 318) {
+          msg ("He took her hand in his and kissed it. She smiled.")
+        }
+        else if (player.turns = 319) {
+          msg ("I felt sick to my stomach. I knew I needed to stop the killer <b>now</b>.")
+        }
+        else if (player.turns = 320) {
+          msg ("From behind, the bishop's blade struck the queen's throat at an angle.")
+          wait {
+            msg ("All in the group reeled in horror as the queen collapsed to the ground, a torrent of blooding pouring from her neck.<br/><br/>The bishop raised his blade once more...")
+            wait {
+              msg ("... and received a sniper's bullet to the head, dropping like a sack of potatoes.<br/><br/>The king's face grew beet red and he began to shake violently. <br/><br/>\"You! All of you! You're all in on it!\" The king's gaze went over me and a chill ran down my spine. \"Guards! Kill them all!\"<br/><br/>A group of large men appeared as from nowhere and I caught the letters \"SOU\" as I turned and ran as fast as I could home.<br/>")
+              MoveObject (player, Alekhines Home)
+              LockExit (AlekhinesHome Church)
+              LockExit (AlekhinesHome Marketplace)
+              LockExit (AlekhinesHome Resort)
+              SetObjectFlagOn (Queen, "dead")
+            }
+          }
+        }
+      ]]></script>
+    </turnscript>
   </object>
   <object name="Downtown">
     <inherit name="editor_room" />
@@ -867,7 +999,6 @@
     <pattern>shoot</pattern>
     <defaultexpression>"You can't shoot " + object.article + "."</defaultexpression>
   </verb>
-  <command />
   <turnscript>
     <enabled />
     <script><![CDATA[
@@ -904,10 +1035,9 @@
         MakeObjectInvisible (Nose)
       }
       else if (player.turns = 301) {
-        msg ("<br/>Holy shit things are heating up, I better get to sleep while I still can. If I don't figure it all out by tomorrow, things are going to get bad fast, and I won't have much time tomorrow.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set... zzzzzzzZZZZZ<br/><br/>")
+        msg ("Holy shit things were heating up, I need to get to sleep while I still could. If I didn't figure it all out by the next day, things would get bad fast.<br/><br/>I'm too tired to take a shower, I'll just lie down on my bed, hopefully my alarm is set...<br/><br/>Zzz...<br/>")
         wait {
-          msg ("I shut off my alarm.<br/><br/>Not the greatest sleep. It was time to get off to work though.<br/><br/>Looking outside showed the rain had finally ceased.")
-        }
+        msg ("I woke before my alarm with a knot in my stomach. I knew the killer was soon to strike again. I needed to find and stop the murderer before the next strike, which was bound to be soon. No time to get Forsyth.<br/><br/>Looking outside showed the rain had finally ceased.")
         MoveObject (player, Alekhines Home)
         MoveObject (Forsyth, Office)
         MakeObjectInvisible (Case File 3)
@@ -915,9 +1045,7 @@
         MakeObjectInvisible (Archbishop Laurence)
         MakeObjectInvisible (Organ Pipe)
         MakeObjectInvisible (Shattered Railing)
-      }
-      else if (player.turns > 350) {
-        msg ("The bad ending, fill in with destructo tales")
+		}
       }
       if (player.turns = 205) {
         msg ("Thunder cracked ominously in the distance.")
@@ -928,11 +1056,26 @@
       else if (player.turns = 235) {
         msg ("The sky had really opened up now. Thunder clapped, closer than before.")
       }
+      if (player.turns = 320) {
+        if (not game.pov.parent = Golf Club) {
+          msg ("Suddenly, klaxons loudly sounded across the city.<br/><br/>A royal death.<br/><br/>I shivered. I was too late. I ran to my home and locked the door.")
+          MoveObject (player, Alekhines Home)
+          LockExit (AlekhinesHome Church)
+          LockExit (AlekhinesHome Marketplace)
+          LockExit (AlekhinesHome Resort)
+        }
+      }
     ]]></script>
   </turnscript>
   <verb>
     <property>review</property>
     <pattern>review</pattern>
     <defaultexpression>"You can't review " + object.article + "."</defaultexpression>
+  </verb>
+  <verb>
+    <pattern>arrest</pattern>
+    <property>arrest</property>
+    <defaulttext>"You can't arrest " + object.article + "."</defaulttext>
+    <defaultexpression>"You can't arrest " + object.article + "."</defaultexpression>
   </verb>
 </asl>
