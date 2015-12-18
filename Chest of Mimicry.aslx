@@ -299,7 +299,7 @@
     </exit>
     <exit name="AlekhinesHome Church" alias="south" to="Church">
       <inherit name="southdirection" />
-      <visible type="boolean">false</visible>
+      <visible />
       <lockmessage>I didn't need to go this way.</lockmessage>
       <locked type="boolean">false</locked>
     </exit>
@@ -484,7 +484,7 @@
       <visible type="boolean">false</visible>
       <drop type="boolean">false</drop>
       <attr name="feature_edible" type="boolean">false</attr>
-      <alias>rookter</alias>
+      <alias>Rookter</alias>
       <alt type="stringlist">
         <value>body</value>
         <value>rookter</value>
