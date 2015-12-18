@@ -262,7 +262,7 @@
         }
         if (player.turns > 201) {
           if (player.turns < 301) {
-            msg ("insert stuff here again")
+            msg ("Forsyth looked at me, \"Looks like we are dealing with a morphling here, and if that's the case then he is definitly targeting somebody tomorrow. I'd guess it would have to be somebody of a higher rank, so probably a king or queen for the upper class.\"<br/><br/>\"We don't have much time tomorrow to stop him tomorrow then, chasing him tonight is useless because he is proably just waiting for the morning when the upper class leaves the protection of thier homes.\" I replied anxiously.<br/><br/>Forsyth starred at me, \"Well in that case you better figure out where he is going to strike tomorrow, because I doubt we have that much time before he kills his target. Since morphlings take the role of their previous victim, and move like they would, you'd better figure out where this now deceased bishop could of gone in the upper class, or else you have no chance of stopping this morphling.\"<br/><br/>I nodded, hoping I'd investigated the crime scenes enough to know our perpetrator's next move.<br/><br/>And with that we both headed home, knowing tomorrow was the day we needed to prove ourselves to our superiors, or they would punish us harshly for not protecting them.")
             player.turns = 300
             MakeObjectInvisible (The Clues)
           }
@@ -418,9 +418,9 @@
       <look type="script">
         msg ("The same officer as the one I met at Rookter's, he glances back at me perplexed. He definitly knows there is something eerily wrong with this situation, espicially with the similarities to the last few murders I've been looking into.")
       </look>
-      <speak type="script">
-        msg ("\"I'd say it's nice to see you again, but honestly I wish none of us were here in this situation right now, and that includes this bishop. Shame he had to end up on top of the organ like this,\" he said with an uncomfortable voice. \"And there's a piece of him missing, just like Rookter had a body part missing. There is something stange going on here. I haven't seen something like this since that last morphling was caught a few years ago. Those crime scenes were brutal to look at, just like these.\"")
-      </speak>
+      <speak type="script"><![CDATA[
+        msg ("\"I'd say it's nice to see you again, but honestly I wish none of us were here in this situation right now, and that includes this bishop. Shame he had to end up on top of the organ like this,\" he said with an uncomfortable voice. \"And there's a piece of him missing, just like Rookter had a body part missing. There is something stange going on here. I haven't seen something like this since that last morphling was caught a few years ago. Those crime scenes were brutal to look at, just like these, they also had the missing parts of the body, just like these crimes.\"<br/><br/>He paused for a second, \"Morphlings are terrible to deal with, they always take the role of their previous victim which makes them difficult to track down since they are always switching identities. If this murderer is a morphling, you'd better catch him before he kills somebody you don't notice, then there is no chance you'll be able to track him.\"")
+      ]]></speak>
     </object>
     <object name="Organ Pipe">
       <inherit name="editor_object" />
@@ -430,7 +430,7 @@
         <value>pipe</value>
       </alt>
       <look type="script"><![CDATA[
-        msg ("A pawn quickly ran and brought back a ladder for me at my request. I climbed up the ladder so I could get a good look at the where there is a chunk of flesh missing from the organ pipe. <br/><br/>When I got high enough to see over his body, I leaned in closer to see inside the pipe. What I noticed was that the piece of his body that was supposed to be there had been removed, as the blood streaks went up as well as down within this pipe.<br/><br/>I relayed what I saw to Forsyth. \"Something very serious is taking place in this city. Better go back to the office and <b> review the clues </b> so we can piece it all together.\"")
+        msg ("A pawn quickly ran and brought back a ladder for me at my request. I climbed up the ladder so I could get a good look at the where there is a chunk of flesh missing from the organ pipe. <br/><br/>When I got high enough to see over his body, I leaned in closer to see inside the pipe. What I noticed was that the piece of his body that was supposed to be there had been removed, as the blood streaks went up as well as down within this pipe.<br/><br/>I relayed what I saw to Forsyth. \"Something very serious is taking place in this city. Better go back to the office and <b> review the clues </b> so we can piece it all together. If i had to guess though, it seems like a morphling. These movement patterns of how he gets to his next victim are just spot on for a morphling.\"")
         MakeObjectVisible (The Clues)
       ]]></look>
     </object>
@@ -439,7 +439,7 @@
       <visible type="boolean">false</visible>
       <alias>shattered railing</alias>
       <look type="script">
-        msg ("A shattered railing right to the west of the organ, the killer must  slammed the Archbishop through the railings which would of thrown him onto the organ pipes, which is where he laid now.")
+        msg ("A shattered railing right to the west of the organ, the killer must  slammed the Archbishop through the railings which would of thrown him onto the organ pipes, which is where he lays now.")
       </look>
     </object>
   </object>
@@ -479,7 +479,7 @@
     <exit name="Resort GovermentOffices" alias="west" to="Government Offices">
       <inherit name="westdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
-      <locked />
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="School">
@@ -556,7 +556,7 @@
         msg ("I could tell that this police officer cared about his job more than most, which is probably why he was working in the middle class area. His uniform was clean and he didn't have a lingering stench, which was a nice change.")
       </look>
       <speak type="script">
-        msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must have surprised Rookter as well,  that look of surprise in his eyes is a dead giveaway.\" He said rather plainly. \"None of the neighbours heard anything unfortunately.\" ")
+        msg ("\"Victim's name is Rookter. One of the more brutal murders I've seen. Seems planned though, mostly because this home still looks too neat, no sign of a fight anywhere. Must have surprised Rookter as well,  that look of surprise in his eyes is a dead giveaway.\" He said rather plainly. \"None of the neighbours heard anything, which unfortunately doesn't help us narrow down what type of person would do this.\" ")
       </speak>
     </object>
     <object name="Rookters Window">
@@ -737,12 +737,12 @@
     <exit name="GovermentOffices GolfClub" alias="west" to="Golf Club">
       <inherit name="westdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
-      <locked />
+      <locked type="boolean">false</locked>
     </exit>
     <exit name="GovermentOffices Resort" alias="east" to="Resort">
       <inherit name="eastdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
-      <locked />
+      <locked type="boolean">false</locked>
     </exit>
   </object>
   <object name="Apartment Complex">
@@ -795,7 +795,7 @@
     <exit name="GolfClub Palace" alias="west" to="Palace">
       <inherit name="westdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
-      <locked />
+      <locked type="boolean">false</locked>
     </exit>
     <exit name="GolfClub Office" alias="south" to="Office">
       <inherit name="southdirection" />
@@ -805,7 +805,7 @@
     <exit name="GolfClub GovermentOffices" alias="east" to="Government Offices">
       <inherit name="eastdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
-      <locked />
+      <locked type="boolean">false</locked>
     </exit>
     <object name="King">
       <inherit name="editor_object" />
@@ -815,7 +815,7 @@
       <alias>king</alias>
       <usedefaultprefix type="boolean">false</usedefaultprefix>
       <prefix>the</prefix>
-      <look type="string"></look>
+      <look>On the the elite of the city, his head rose above the rest. He walked with an elegant stride, his robes only amplifying the aura of power surrounding him.</look>
       <shoot>As stressed as I was, I had not cracked. I would never shoot the king!</shoot>
       <arrest>No, no! I was wasting time thinking these foolish things.</arrest>
     </object>
@@ -827,7 +827,7 @@
       <alias>queen</alias>
       <usedefaultprefix type="boolean">false</usedefaultprefix>
       <prefix>the</prefix>
-      <look type="string"></look>
+      <look>Even among the upper class elites, this Queen was stunning, she held heself with such grace she appeared to almost be floating around the room in her enthrolling dress.</look>
       <shoot>Never!</shoot>
       <arrest>No, that couldn't be the right thing to do!</arrest>
     </object>
@@ -1020,7 +1020,7 @@
     <exit name="Palace GolfClub" alias="east" to="Golf Club">
       <inherit name="eastdirection" />
       <lockmessage>I didn't need to go this way.</lockmessage>
-      <locked />
+      <locked type="boolean">false</locked>
     </exit>
     <exit name="Palace School" alias="south" to="School">
       <inherit name="southdirection" />
